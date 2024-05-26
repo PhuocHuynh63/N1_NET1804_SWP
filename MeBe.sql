@@ -20,6 +20,8 @@ CREATE TABLE [user] (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     deleted_at DATETIME NULL
 );
+SELECT * FROM [user]
+INSERT INTO [user] VALUES ('dwa', 'Thuan', 'Hua', 'dno@gmail.com', '123', 'admin', '2003-02-21', '098973462', 0, '2003-03-21', '2003-03-23', '2003-04-23')
 
 -- Tạo bảng Address
 CREATE TABLE address (
