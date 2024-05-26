@@ -1,19 +1,29 @@
 package com.n3.mebe.entity;
 
-import com.mebe.model.Category;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Setter
-@Getter
+import java.util.Set;
+
+@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "subcategory")
 public class SubCategory {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "subcategory_id")
     private int subCateId;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
     private Category category;
+
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "subCategory")
+    private Set<Product> product;
 }
