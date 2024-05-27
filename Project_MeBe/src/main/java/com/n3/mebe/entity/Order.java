@@ -1,14 +1,17 @@
 package com.n3.mebe.entity;
 
+import com.n3.mebe.entity.OrderDetail;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "[order]")
 public class Order {
 
     @Id
@@ -33,10 +36,10 @@ public class Order {
     private String status;
 
     @Column(name = "created_at")
-    private Date createAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private Date updateAt;
+    private Date updatedAt;
 
     @Column(name = "email_sent")
     private boolean emailSent;
@@ -53,4 +56,6 @@ public class Order {
     @Column(name = "remaining_amount")
     private float remainingAmount;
 
+    @OneToMany(mappedBy = "order")
+    private Set<OrderDetail> orderDetails;
 }
