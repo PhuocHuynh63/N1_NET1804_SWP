@@ -10,6 +10,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -45,4 +46,6 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private Set<Review> reviewsProducts;
 
+    @OneToMany(mappedBy = "product")
+    private Set<OrderDetail> orderDetails;
 }

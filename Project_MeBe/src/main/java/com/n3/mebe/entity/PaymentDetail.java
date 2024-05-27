@@ -10,6 +10,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "payment_detail")
 public class PaymentDetail {
 
     @Id
