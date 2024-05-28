@@ -32,8 +32,8 @@ public class UserService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
-        user.setBirthOfDate(request.getBirthOfDate());
-        user.setPhoneNumber(request.getPhoneNumber());
+        user.setBirthDate(request.getBirthOfDate());
+        user.setPhone(request.getPhoneNumber());
         user.setPoint(request.getPoint());
         user.setCreateAt(request.getCreateAt());
         user.setUpdateAt(request.getUpdateAt());
@@ -61,8 +61,8 @@ public class UserService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
-        user.setBirthOfDate(request.getBirthOfDate());
-        user.setPhoneNumber(request.getPhoneNumber());
+        user.setBirthDate(request.getBirthOfDate());
+        user.setPhone(request.getPhoneNumber());
         user.setPoint(request.getPoint());
         user.setCreateAt(request.getCreateAt());
         user.setUpdateAt(request.getUpdateAt());
