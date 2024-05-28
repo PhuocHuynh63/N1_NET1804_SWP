@@ -8,8 +8,9 @@ GO
 CREATE TABLE [user] (
     user_id INT PRIMARY KEY IDENTITY(1,1),
     avatar VARCHAR(255),
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
+    first_name NVARCHAR(50),
+    last_name NVARCHAR(50),
+	username VARCHAR(50),
     email VARCHAR(100) UNIQUE,
     [password] VARCHAR(255),
     role VARCHAR(20),
@@ -21,7 +22,7 @@ CREATE TABLE [user] (
     deleted_at DATETIME NULL
 );
 SELECT * FROM [user]
-INSERT INTO [user] VALUES ('dwa', 'Thuan', 'Hua', 'dno@gmail.com', '123', 'admin', '2003-02-21', '098973462', 0, '2003-03-21', '2003-03-23', '2003-04-23')
+INSERT INTO [user] VALUES ('dwa', 'Thuan', 'Hua', 'huathuan','dno@gmail.com', '123', 'admin', '2003-02-21', '098973462', 0, '2003-03-21', '2003-03-23', '2003-04-23')
 
 -- Tạo bảng Address
 CREATE TABLE address (
@@ -29,10 +30,10 @@ CREATE TABLE address (
     user_id INT,
     is_default BIT,
     title VARCHAR(100),
-    address_line_1 VARCHAR(255),
-    address_line_2 VARCHAR(255),
-    country VARCHAR(100),
-    city VARCHAR(100),
+    address_line_1 NVARCHAR(255),
+    address_line_2 NVARCHAR(255),
+    country NVARCHAR(100),
+    city NVARCHAR(100),
     postal_code VARCHAR(20),
     FOREIGN KEY (user_id) REFERENCES [user](user_id)
 );
@@ -40,7 +41,7 @@ CREATE TABLE address (
 -- Tạo bảng Category
 CREATE TABLE category (
     category_id INT PRIMARY KEY IDENTITY(1,1),
-    name VARCHAR(100),
+    name NVARCHAR(100),
     description TEXT
 );
 
@@ -48,7 +49,7 @@ CREATE TABLE category (
 CREATE TABLE subcategory (
     subcategory_id INT PRIMARY KEY IDENTITY(1,1),
     parent_id INT,
-    name VARCHAR(100),
+    name NVARCHAR(100),
     description TEXT,
     FOREIGN KEY (parent_id) REFERENCES category(category_id)
 );
@@ -56,20 +57,20 @@ CREATE TABLE subcategory (
 -- Tạo bảng ProductAttribute
 CREATE TABLE product_attribute (
     product_attribute_id INT PRIMARY KEY IDENTITY(1,1),
-    type VARCHAR(50),
-    value VARCHAR(100)
+    type NVARCHAR(50),
+    value NVARCHAR(100)
 );
 
 -- Tạo bảng Product
 CREATE TABLE product (
     product_id INT PRIMARY KEY IDENTITY(1,1),
-    name VARCHAR(255),
+    name NVARCHAR(255),
     img VARCHAR(255),
     description TEXT,
     subcategory_id INT,
     number_view INT,
     is_flash_sale BIT,
-    status VARCHAR(20),
+    status NVARCHAR(20),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (subcategory_id) REFERENCES subcategory(subcategory_id)
@@ -81,7 +82,7 @@ CREATE TABLE product_skus (
     product_id INT,
     size_id INT,
     color_id INT,
-    sku VARCHAR(50) UNIQUE,
+    sku NVARCHAR(50) UNIQUE,
     price DECIMAL(10, 2),
     quantity INT,
     FOREIGN KEY (product_id) REFERENCES product(product_id),
@@ -104,9 +105,9 @@ CREATE TABLE review (
 -- Tạo bảng Voucher
 CREATE TABLE voucher (
     voucher_id INT PRIMARY KEY IDENTITY(1,1),
-    voucher_type VARCHAR(50),
+    voucher_type NVARCHAR(50),
     cost DECIMAL(10, 2),
-    name VARCHAR(100),
+    name NVARCHAR(100),
     code VARCHAR(50) UNIQUE,
     usage_quantity INT,
     quantity INT,
@@ -125,7 +126,7 @@ CREATE TABLE payment_detail (
     amount DECIMAL(10, 2),
     provider VARCHAR(50),
     transaction_code VARCHAR(100),
-    status VARCHAR(20),
+    status NVARCHAR(20),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
