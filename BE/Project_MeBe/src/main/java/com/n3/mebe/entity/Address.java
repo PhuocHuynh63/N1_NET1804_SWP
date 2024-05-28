@@ -1,5 +1,4 @@
 package com.n3.mebe.entity;
-
 import jakarta.persistence.*;
 import lombok.*;
 

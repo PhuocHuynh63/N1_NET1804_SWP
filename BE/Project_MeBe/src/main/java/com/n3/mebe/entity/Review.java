@@ -31,4 +31,5 @@ public class Review {
     @Column(name = "created_at")
     private Date createAt;
 
+
 }

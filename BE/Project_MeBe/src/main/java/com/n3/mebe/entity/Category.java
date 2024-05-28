@@ -24,5 +24,4 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private Set<SubCategory> subCategories;
-
 }
