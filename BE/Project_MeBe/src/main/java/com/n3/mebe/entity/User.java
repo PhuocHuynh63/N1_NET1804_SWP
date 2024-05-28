@@ -18,6 +18,9 @@ public class User {
     @Column(name = "user_id")
     private int userId;
 
+    @Column(name = "avatar")
+    private String avatar;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -26,7 +29,7 @@ public class User {
 
     private String email;
     private String password;
-    private String role;
+    private String role = "Member";
 
     @Column(name = "[birth_date]")
     private Date birthDate;
