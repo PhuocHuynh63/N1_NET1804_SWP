@@ -1,0 +1,28 @@
+package com.n3.mebe.exception;
+
+import lombok.Getter;
+
+public enum ErrorCode {
+
+    PRODUCT_NO_EXIST(1000, "Product does not exist"),
+    USER_EXIST(1001, "User existed"),
+    PRODUCT_NAME_EXIST(1002, "Product name already exist"),
+    NO_USER_EXIST(1003, "No User existed"),
+    Address_NO_EXIST(1004, " Address does not exist"),
+    INVALITE_MESSAGE_KEY(1005, "Invalid message key"),
+    CATEGORY_EXIST(1006, "Category exist"),
+    CATEGORY_NO_EXIST(1007, "Category no exist"),
+    UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception"),;
+    @Getter
+    private int code;
+
+
+    @Getter
+    private String message;
+
+    ErrorCode(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+}
