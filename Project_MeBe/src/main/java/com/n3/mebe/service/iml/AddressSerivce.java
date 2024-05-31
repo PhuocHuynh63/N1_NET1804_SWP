@@ -32,7 +32,6 @@ public class AddressSerivce implements IAddressService {
      *
      */
 
-
     // <editor-fold default state="collapsed" desc="Create Address">
     @Override
     public Address createAddress(int id,CreateAddressRequest request) {
@@ -106,7 +105,6 @@ public class AddressSerivce implements IAddressService {
             addressUserResponse.setPhoneNumber(address.getUser().getPhoneNumber());
             addressUserResponse.setAvatar(address.getUser().getAvatar());
 
-
             //add user Response ở trên vào
             addressResponse.setUser(addressUserResponse);
 
@@ -125,4 +123,5 @@ public class AddressSerivce implements IAddressService {
 
         return addressResponsesList;
     }// </editor-fold>
+
 }

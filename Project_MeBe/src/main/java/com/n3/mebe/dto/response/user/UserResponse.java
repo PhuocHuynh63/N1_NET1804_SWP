@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class UserResponse {
 
+    private int id;
     private String avatar;
     private String firstName;
     private String lastName;
