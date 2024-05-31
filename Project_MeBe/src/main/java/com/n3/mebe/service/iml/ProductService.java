@@ -92,13 +92,14 @@ public class ProductService implements IProductService {
     // <editor-fold default state="collapsed" desc="GetList Product Id">
     @Override
     public Product getProductById(int id) {
-        return iProductRespository.findById(id).orElseThrow( () -> new RuntimeException("Product not found"));
+        return iProductRespository.findById(id).orElseThrow( () -> new AppException(ErrorCode.PRODUCT_NO_EXIST));
     }// </editor-fold>
 
     // <editor-fold default state="collapsed" desc="Get Product By Id Response">
     @Override
     public ProductResponse getProductByIdResponse(int id) {
         Product product = getProductById(id);
+
         ProductResponse productResponse = new ProductResponse();
 
         productResponse.setName(product.getName());
@@ -114,10 +115,31 @@ public class ProductService implements IProductService {
         return productResponse;
     }// </editor-fold>
 
-    // <editor-fold default state="collapsed" desc="Get List Product By SubCate">
+    // <editor-fold default state="collapsed" desc="Get List Product By SubCate Name">
     @Override
-    public List<Product> getListProductBySubCate(String cate) {
-        return iProductRespository.findBySubCategoryCategoryName(cate);
+    public List<Product> getListProductBySubCateName(String cateName) {
+        return iProductRespository.findBySubCategoryCategoryName(cateName);
+    }// </editor-fold>
+
+    // <editor-fold default state="collapsed" desc="Get List Product Response By SubCate">
+    public List<ProductResponse> getProductResponseList(String cate) {
+        List<ProductResponse> productResponseList = new ArrayList<>();
+
+        List<Product> productList = getListProductBySubCateName(cate);
+        for (Product product : productList) {
+            ProductResponse productResponse = new ProductResponse();
+            productResponse.setName(product.getName());
+            productResponse.setImg(product.getImg());
+            productResponse.setDescription(product.getDescription());
+            productResponse.setSubCategory(product.getSubCategory());
+            productResponse.setNumberView(product.getNumberView());
+            productResponse.setFlashSale(product.isFlashSale());
+            productResponse.setStatus(product.getStatus());
+            productResponse.setCreateAt(product.getCreateAt());
+            productResponse.setUpdateAt(product.getUpdateAt());
+            productResponseList.add(productResponse);
+        }
+        return productResponseList;
     }// </editor-fold>
 
     // <editor-fold default state="collapsed" desc="Get List Product By Id Or Name">
@@ -145,4 +167,6 @@ public class ProductService implements IProductService {
         }
         return productResponseList;
     }// </editor-fold>
+
+
 }

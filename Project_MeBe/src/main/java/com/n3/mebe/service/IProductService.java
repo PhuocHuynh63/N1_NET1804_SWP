@@ -15,7 +15,7 @@ public interface IProductService {
 
     ProductResponse getProductByIdResponse(int id);
 
-    List<Product> getListProductBySubCate(String cate);
+    List<Product> getListProductBySubCateName(String cate);
 
     Product createProduct(ProductRequest productRequest);
 

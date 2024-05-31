@@ -68,8 +68,6 @@ public class CategoryService implements ICategoryService {
     }//</editor-fold>
 
 
-
-
     /**
      *  Response to Client
      *

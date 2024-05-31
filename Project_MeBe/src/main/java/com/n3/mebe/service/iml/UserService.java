@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -88,7 +89,6 @@ public class UserService implements IUserService {
         iUserRepository.deleteById(id);
     }// </editor-fold>
 
-
     /**
      *  Response to Client
      *
@@ -96,8 +96,29 @@ public class UserService implements IUserService {
 
     // <editor-fold default state="collapsed" desc="Get All User">
     @Override
-    public List<User> getAllUser(){
-        return iUserRepository.findAll();
+    public List<UserResponse> getAllUser(){
+        List<User> users = iUserRepository.findAll();
+        List<UserResponse> userResponses = new ArrayList<>();
+        for (User user : users){
+
+            UserResponse userResponse = new UserResponse();
+
+            userResponse.setId(userResponse.getId());
+            userResponse.setAvatar(user.getAvatar());
+            userResponse.setFirstName(user.getFirstName());
+            userResponse.setLastName(user.getLastName());
+            userResponse.setEmail(user.getEmail());
+            userResponse.setPassword(user.getPassword());
+            userResponse.setRole(user.getRole());
+            userResponse.setBirthOfDate(user.getBirthOfDate());
+            userResponse.setPhoneNumber(user.getPhoneNumber());
+            userResponse.setPoint(user.getPoint());
+            userResponse.setCreateAt(user.getCreateAt());
+            userResponse.setUpdateAt(user.getUpdateAt());
+            userResponse.setDeleteAt(user.getDeleteAt());
+            userResponses.add(userResponse);
+        }
+        return userResponses;
     }// </editor-fold>
 
     // <editor-fold default state="collapsed" desc="Get User By Id">
