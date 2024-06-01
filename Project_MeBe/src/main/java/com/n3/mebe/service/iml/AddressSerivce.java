@@ -6,7 +6,6 @@ import com.n3.mebe.dto.response.address.AddressResponse;
 import com.n3.mebe.dto.response.address.AddressUserResponse;
 import com.n3.mebe.entity.Address;
 import com.n3.mebe.entity.User;
-import com.n3.mebe.exception.ApiRespones;
 import com.n3.mebe.exception.AppException;
 import com.n3.mebe.exception.ErrorCode;
 import com.n3.mebe.repository.IAddressRepository;
@@ -102,7 +101,7 @@ public class AddressSerivce implements IAddressService {
             //Add những thứ của user để response địa chỉ
             addressUserResponse.setFirstName(address.getUser().getFirstName());
             addressUserResponse.setLastName(address.getUser().getLastName());
-            addressUserResponse.setPhoneNumber(address.getUser().getPhoneNumber());
+            addressUserResponse.setPhoneNumber(address.getUser().getPhone());
             addressUserResponse.setAvatar(address.getUser().getAvatar());
 
             //add user Response ở trên vào

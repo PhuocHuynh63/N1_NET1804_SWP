@@ -1,11 +1,9 @@
 package com.n3.mebe.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
 import java.util.Set;
@@ -15,49 +13,52 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "[user]")
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    int userId;
+    private int userId;
 
-     String avatar;
+    @Column(name = "avatar")
+    private String avatar;
+
+    @Column(name = "username")
+    private String username;
+
     @Column(name = "first_name")
-     String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-     String lastName;
-    
-     String email;
+    private String lastName;
 
-     String password;
-     String role;
+    private String email;
+    private String password;
+    private String role = "Member";
 
     @Column(name = "[birth_date]")
-     Date birthOfDate;
+    private Date birthDate;
 
     @Column(name = "phone")
-     String phoneNumber;
+    private String phone;
 
-     int point;
+    private int point;
 
     @Column(name = "created_at")
-     Date createAt;
+    private Date createAt;
 
     @Column(name = "updated_at")
-     Date updateAt;
+    private Date updateAt;
 
     @Column(name = "deleted_at")
-     Date deleteAt;
+    private Date deleteAt;
 
     @OneToMany(mappedBy = "user")
-     Set<Address> listAddress;
+    private Set<Address> listAddress;
 
     @OneToMany(mappedBy = "user")
-     Set<Review> reviewsUser;
+    private Set<Review> reviewsUser;
 
     @OneToMany(mappedBy = "user")
-     Set<Order> orders;
+    private Set<Order> orders;
 }

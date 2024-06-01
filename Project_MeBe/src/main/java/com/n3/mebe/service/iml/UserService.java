@@ -12,11 +12,9 @@ import com.n3.mebe.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class UserService implements IUserService {
@@ -44,8 +42,8 @@ public class UserService implements IUserService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
-        user.setBirthOfDate(request.getBirthOfDate());
-        user.setPhoneNumber(request.getPhoneNumber());
+        user.setBirthDate(request.getBirthOfDate());
+        user.setPhone(request.getPhoneNumber());
         user.setPoint(request.getPoint());
 
         Date now = new Date();// lấy thời gian hiện tại
@@ -69,8 +67,8 @@ public class UserService implements IUserService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
-        user.setBirthOfDate(request.getBirthOfDate());
-        user.setPhoneNumber(request.getPhoneNumber());
+        user.setBirthDate(request.getBirthOfDate());
+        user.setPhone(request.getPhoneNumber());
         user.setPoint(request.getPoint());
 
         user.setCreateAt(request.getCreateAt());
@@ -97,9 +95,9 @@ public class UserService implements IUserService {
     // <editor-fold default state="collapsed" desc="Get All User">
     @Override
     public List<UserResponse> getAllUser(){
-        List<User> users = iUserRepository.findAll();
+        List<User> listUsers = iUserRepository.findAll();
         List<UserResponse> userResponses = new ArrayList<>();
-        for (User user : users){
+        for (User user : listUsers){
 
             UserResponse userResponse = new UserResponse();
 
@@ -110,8 +108,7 @@ public class UserService implements IUserService {
             userResponse.setEmail(user.getEmail());
             userResponse.setPassword(user.getPassword());
             userResponse.setRole(user.getRole());
-            userResponse.setBirthOfDate(user.getBirthOfDate());
-            userResponse.setPhoneNumber(user.getPhoneNumber());
+            userResponse.setBirthOfDate(user.getBirthDate());
             userResponse.setPoint(user.getPoint());
             userResponse.setCreateAt(user.getCreateAt());
             userResponse.setUpdateAt(user.getUpdateAt());
@@ -142,8 +139,8 @@ public class UserService implements IUserService {
         userResponse.setEmail(user.getEmail());
         userResponse.setPassword(user.getPassword());
         userResponse.setRole(user.getRole());
-        userResponse.setBirthOfDate(user.getBirthOfDate());
-        userResponse.setPhoneNumber(user.getPhoneNumber());
+        userResponse.setBirthOfDate(user.getBirthDate());
+        userResponse.setPhoneNumber(user.getPhone());
         userResponse.setPoint(user.getPoint());
         userResponse.setCreateAt(user.getCreateAt());
         userResponse.setUpdateAt(user.getUpdateAt());
