@@ -12,7 +12,13 @@ public enum ErrorCode {
     INVALITE_MESSAGE_KEY(1005, "Invalid message key"),
     CATEGORY_EXIST(1006, "Category exist"),
     CATEGORY_NO_EXIST(1007, "Category no exist"),
-    UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception"),;
+    PRODUCT_SKU_NO_EXIST(1008, "Product sku does not exist"),
+    PRODUCT_ATTRIBUTE_NO_EXIST(1009, "Product attribute does not exist"),
+    PRODUCT_ATTRIBUTE_EXIST(1009, "Product attribute exist"),
+    UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception"),
+    ;
+
+
     @Getter
     private int code;
 
