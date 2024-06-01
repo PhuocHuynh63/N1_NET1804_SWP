@@ -16,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductResponse {
+
     private String name;
     private String img;
     private String description;

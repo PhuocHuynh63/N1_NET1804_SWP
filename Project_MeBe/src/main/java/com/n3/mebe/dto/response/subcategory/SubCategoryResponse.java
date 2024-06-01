@@ -14,8 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class SubCategoryResponse {
 
-    private Category category;
+    private String category_parent;
     private String name;
     private String description;
-
 }

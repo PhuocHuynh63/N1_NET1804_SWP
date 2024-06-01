@@ -18,10 +18,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/list")
-    public List<CategoryResponse> list() {
-        return categoryService.getListCategory();
-    }
+
+    /**
+     *  Request from Client
+     *
+     */
 
     @PostMapping("/create_cate")
     public Category createCategory(@RequestBody CreateCategoryRequest request) {
@@ -36,6 +37,17 @@ public class CategoryController {
     @DeleteMapping("/delete_cate/cateId={id}")
     public void deleteCategory(@PathVariable("id") int id) {
         categoryService.deleteCategory(id);
+    }
+
+
+    /**
+     * Response to Client
+     *
+     */
+
+    @GetMapping("/list")
+    public List<CategoryResponse> list() {
+        return categoryService.getListCategory();
     }
 
 }
