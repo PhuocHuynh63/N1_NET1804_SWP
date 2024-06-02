@@ -12,8 +12,6 @@ import java.util.Set;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "[user]")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
@@ -29,7 +27,8 @@ public class User {
 
     @Column(name = "last_name")
      String lastName;
-    
+
+    String username;
      String email;
 
      String password;
