@@ -4,11 +4,10 @@ import com.n3.mebe.dto.request.product.ProductSkuRequest;
 import com.n3.mebe.dto.response.product.ProductSkuResponse;
 import com.n3.mebe.entity.Product;
 import com.n3.mebe.entity.ProductAttribute;
-import com.n3.mebe.entity.ProductSkus;
+import com.n3.mebe.entity.Inventory;
 import com.n3.mebe.exception.AppException;
 import com.n3.mebe.exception.ErrorCode;
 import com.n3.mebe.repository.IProductSkuRepository;
-import com.n3.mebe.service.IProductService;
 import com.n3.mebe.service.IProductSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,11 +36,11 @@ public class ProductSkuService implements IProductSkuService {
 
     // <editor-fold default state="collapsed" desc="Create Product Sku">
     @Override
-    public ProductSkus createProductSku(int prId, ProductSkuRequest productSkuRequest) {
+    public Inventory createProductSku(int prId, ProductSkuRequest productSkuRequest) {
 
 
         Product product = productService.getProductById(prId);
-        ProductSkus productSkus = new ProductSkus();
+        Inventory inventory = new Inventory();
 
         //Lấy color từ Id color truyền từ request xuống
         ProductAttribute color = productAttributeService.getProductAttributeById(productSkuRequest.getColorAttributeId());
@@ -49,22 +48,22 @@ public class ProductSkuService implements IProductSkuService {
         ProductAttribute size = productAttributeService.getProductAttributeById(productSkuRequest.getSizeAttributeId());
 
 
-        productSkus.setProduct(product);
-        productSkus.setSizeAttributeId(color);
-        productSkus.setSizeAttributeId(size);
-        productSkus.setSku(productSkuRequest.getSku());
-        productSkus.setPrice(productSkuRequest.getPrice());
-        productSkus.setQuantity(productSkuRequest.getQuantity());
+        inventory.setProduct(product);
+        inventory.setSizeAttributeId(color);
+        inventory.setSizeAttributeId(size);
+        inventory.setSku(productSkuRequest.getSku());
+        inventory.setPrice(productSkuRequest.getPrice());
+        inventory.setQuantity(productSkuRequest.getQuantity());
 
-        return productSkuRepository.save(productSkus);
+        return productSkuRepository.save(inventory);
     }// </editor-fold>
 
     // <editor-fold default state="collapsed" desc="Update Product Sku">
     @Override
-    public ProductSkus updateProductSku(int prIdSku,ProductSkuRequest productSkuRequest) {
+    public Inventory updateProductSku(int prIdSku, ProductSkuRequest productSkuRequest) {
 
 
-        ProductSkus productSkus = productSkuRepository.findById(prIdSku)
+        Inventory inventory = productSkuRepository.findById(prIdSku)
                 .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_SKU_NO_EXIST));
 
         //Lấy color từ Id color truyền từ request xuống
@@ -72,13 +71,13 @@ public class ProductSkuService implements IProductSkuService {
         //Lấy size từ Id size  truyền từ request xuống
         ProductAttribute size = productAttributeService.getProductAttributeById(productSkuRequest.getSizeAttributeId());
 
-        productSkus.setSizeAttributeId(color);
-        productSkus.setSizeAttributeId(size);
-        productSkus.setSku(productSkuRequest.getSku());
-        productSkus.setPrice(productSkuRequest.getPrice());
-        productSkus.setQuantity(productSkuRequest.getQuantity());
+        inventory.setSizeAttributeId(color);
+        inventory.setSizeAttributeId(size);
+        inventory.setSku(productSkuRequest.getSku());
+        inventory.setPrice(productSkuRequest.getPrice());
+        inventory.setQuantity(productSkuRequest.getQuantity());
 
-        return productSkuRepository.save(productSkus);
+        return productSkuRepository.save(inventory);
     }// </editor-fold>
 
     // <editor-fold default state="collapsed" desc="Delete Product Sku">
@@ -95,10 +94,10 @@ public class ProductSkuService implements IProductSkuService {
     // <editor-fold default state="collapsed" desc="Get All Product Sku">
     @Override
     public List<ProductSkuResponse> getAllProductSku() {
-        List<ProductSkus> list = productSkuRepository.findAll();
+        List<Inventory> list = productSkuRepository.findAll();
         List<ProductSkuResponse> productSkuResponseList = new ArrayList<>();
 
-        for (ProductSkus productSku : list) {
+        for (Inventory productSku : list) {
             ProductSkuResponse productSkuResponse = new ProductSkuResponse();
             productSkuResponse.setProductSkuId(productSku.getPsId());
             productSkuResponse.setProduct(productSku.getProduct());

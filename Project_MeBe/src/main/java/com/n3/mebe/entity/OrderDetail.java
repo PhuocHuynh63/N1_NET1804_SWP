@@ -14,7 +14,7 @@ public class OrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "order_detail_id")
     private int id;
 
     @ManyToOne
@@ -26,10 +26,14 @@ public class OrderDetail {
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "product_sku_id")
-    private ProductSkus productSkus;
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 
     private int quantity;
-    private float discount;
+
+    private float price;
+
+    @JoinColumn(name = "sale_price")
+    private float salePrice;
 
 }

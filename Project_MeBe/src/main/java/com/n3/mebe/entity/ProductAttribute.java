@@ -20,11 +20,12 @@ public class ProductAttribute {
     private int paId;
 
     private String type;
+
     private String value;
 
     @OneToMany(mappedBy = "sizeAttributeId")
-    private Set<ProductSkus> productSizeSkus;
+    private Set<Inventory> productSizeSkus;
 
     @OneToMany(mappedBy = "colorAttributeId")
-    private Set<ProductSkus> productColorSkus;
+    private Set<Inventory> productColorSkus;
 }

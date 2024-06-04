@@ -20,33 +20,41 @@ public class Voucher {
     @Column(name = "voucher_id")
     private int voucherId;
 
-    @Column(name = "voucher_type")
-    private String voucherType;
-    private float cost;
+    @Column(name = "voucher_code")
+    private String voucherCode;
+
+    @Column(name = "discount_type")
+    private String discountType;
+
+    @Column(name = "discount_value")
+    private int discountValue;
+
+    @Column(name = "[name]")
     private String name;
-    private String code;
 
-    @Column(name = "usage_quantity")
-    private int usageQuantity;
-    private int quantity;
-    private float percentage;
+    @Column(name = "cost")
+    private float cost;
 
-    @Column(name = "min_basket_price")
-    private float minBasketPrice;
+    private float quantity;
 
-    @Column(name = "max_basket_price")
-    private float maxBasketPrice;
+    @Column(name = "minimum_apply")
+    private float minimumApply;
 
     @Column(name = "max_discount")
     private float maxDiscount;
 
-    @Column(name = "start_at")
-    private Date startAt;
 
-    @Column(name = "end_at")
-    private Date endTime;
+    @Column(name = "is_active")
+    private boolean isActive;
 
-    private String status;
+    @Column(name = "is_public")
+    private boolean isPublic;
+
+    @Column(name = "create_at")
+    private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
 
     @OneToMany(mappedBy = "voucher")
     private Set<Order> orders;

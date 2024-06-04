@@ -20,21 +20,34 @@ public class Product {
     @Column(name = "product_id")
     private int productId;
 
-    private String name;
-    private String img;
-    private String description;
-
     @ManyToOne
     @JoinColumn(name = "subcategory_id")
+
     private SubCategory subCategory;
 
-    @Column(name = "number_view")
-    private int numberView;
+    private String slug;
 
-    @Column(name = "is_flash_sale")
-    private boolean isFlashSale;
+    @JoinColumn(name = "[name]")
+    private String name;
 
+    private String images;
+
+    @JoinColumn(name = "[description]")
+    private String description;
+
+    private float price;
+
+    @JoinColumn(name = "sale_price")
+    private float salePrice;
+
+    @JoinColumn(name = "[status]")
     private String status;
+
+    @JoinColumn(name = "total_sold")
+    private int totalSold;
+
+    @JoinColumn(name = "product_view")
+    private int productView;
 
     @Column(name = "created_at")
     private Date createAt;
@@ -43,7 +56,7 @@ public class Product {
     private Date updateAt;
 
     @OneToMany(mappedBy = "product")
-    private Set<ProductSkus> productSkuses;
+    private Set<Inventory> inventories;
 
     @OneToMany(mappedBy = "product")
     private Set<Review> reviewsProducts;

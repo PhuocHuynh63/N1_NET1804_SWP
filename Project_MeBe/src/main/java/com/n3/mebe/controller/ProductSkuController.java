@@ -3,7 +3,7 @@ package com.n3.mebe.controller;
 
 import com.n3.mebe.dto.request.product.ProductSkuRequest;
 import com.n3.mebe.dto.response.product.ProductSkuResponse;
-import com.n3.mebe.entity.ProductSkus;
+import com.n3.mebe.entity.Inventory;
 import com.n3.mebe.service.iml.ProductSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +24,12 @@ public class ProductSkuController {
      *
      */
     @PostMapping("/create/product_id={id}")
-    public ProductSkus createProductSku(@PathVariable("id") int prId, @RequestBody ProductSkuRequest request) {
+    public Inventory createProductSku(@PathVariable("id") int prId, @RequestBody ProductSkuRequest request) {
         return productSkuService.createProductSku(prId, request);
     }
 
     @PutMapping("/update/productSku_id={id}")
-    public ProductSkus updateProductSku(@PathVariable("id") int prIdSku,@RequestBody ProductSkuRequest request) {
+    public Inventory updateProductSku(@PathVariable("id") int prIdSku, @RequestBody ProductSkuRequest request) {
         return productSkuService.updateProductSku(prIdSku, request);
     }
 
