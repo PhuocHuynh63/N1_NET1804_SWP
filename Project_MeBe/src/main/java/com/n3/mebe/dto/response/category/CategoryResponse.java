@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class CategoryResponse {
     private int categoryId;
     private String name;
-    private String description;
+    private String slug;
 }

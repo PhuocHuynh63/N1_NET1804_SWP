@@ -10,6 +10,8 @@ import com.n3.mebe.exception.ErrorCode;
 import com.n3.mebe.repository.IUserRepository;
 import com.n3.mebe.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -33,25 +35,32 @@ public class UserService implements IUserService {
     @Override
     public User createUser(UserCreateRequest request){
         User user = new User();
+        String role = "member";
+        int point = 0;
+        String status = "active";
 
         if (iUserRepository.existsByEmail(request.getEmail())){
             throw new AppException(ErrorCode.USER_EXIST);
         }
 
-        user.setAvatar(request.getAvatar());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
+        user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setRole(request.getRole());
+
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        user.setRole(role);
         user.setBirthOfDate(request.getBirthOfDate());
         user.setPhoneNumber(request.getPhoneNumber());
-        user.setPoint(request.getPoint());
+        user.setPoint(point);
+        user.setStatus(status);
 
         Date now = new Date();// lấy thời gian hiện tại
 
         user.setCreateAt(now);
-        user.setUpdateAt(null);
+        user.setUpdateAt(now);
         user.setDeleteAt(null);
 
         return iUserRepository.save(user);
@@ -67,21 +76,30 @@ public class UserService implements IUserService {
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setRole(request.getRole());
+
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+
         user.setBirthOfDate(request.getBirthOfDate());
         user.setPhoneNumber(request.getPhoneNumber());
-        user.setPoint(request.getPoint());
-
-        user.setCreateAt(request.getCreateAt());
 
         Date now = new Date();
-
         user.setUpdateAt(now);
-        user.setDeleteAt(request.getDeleteAt());
+
 
         return  iUserRepository.save(user);
     }// </editor-fold>
+
+
+    public String checkPassword(String password, String confirmPassword){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        passwordEncoder.matches(password, confirmPassword);
+
+        return passwordEncoder.encode(password);
+    }
+
+
+
 
     // <editor-fold default state="collapsed" desc="Delete User By Id">
     @Override
@@ -107,6 +125,7 @@ public class UserService implements IUserService {
             userResponse.setAvatar(user.getAvatar());
             userResponse.setFirstName(user.getFirstName());
             userResponse.setLastName(user.getLastName());
+            userResponse.setUsername(user.getUsername());
             userResponse.setEmail(user.getEmail());
             userResponse.setPassword(user.getPassword());
             userResponse.setRole(user.getRole());
@@ -125,7 +144,7 @@ public class UserService implements IUserService {
     @Override
     public User getUserById(int id){
         return iUserRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new AppException(ErrorCode.NO_USER_EXIST));
     }// </editor-fold>
 
     // <editor-fold default state="collapsed" desc="Get User By Id Response">
@@ -136,9 +155,11 @@ public class UserService implements IUserService {
 
         User user = getUserById(id);
 
+        userResponse.setId(userResponse.getId());
         userResponse.setAvatar(user.getAvatar());
         userResponse.setFirstName(user.getFirstName());
         userResponse.setLastName(user.getLastName());
+        userResponse.setUsername(user.getUsername());
         userResponse.setEmail(user.getEmail());
         userResponse.setPassword(user.getPassword());
         userResponse.setRole(user.getRole());

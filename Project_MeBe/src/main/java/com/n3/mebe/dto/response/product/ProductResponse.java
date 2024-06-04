@@ -13,13 +13,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class ProductResponse {
 
-    private String name;
-    private String img;
-    private String description;
     private SubCategory subCategory;
-    private int numberView;
-    private boolean isFlashSale;
+    private String slug;
+    private String name;
+    private String images;
+    private String description;
+    private float price;
+    private float salePrice;
     private String status;
+    private int totalSold;
+    private int productView;
     private Date createAt;
     private Date updateAt;
 }

@@ -10,14 +10,11 @@ import lombok.NoArgsConstructor;
 public class AddressResponse {
 
     private int addressId;
-
     private AddressUserResponse user;
-
     private boolean isDefault;
     private String title;
-    private String addressLine1;
-    private String addressLine2;
-    private String country;
+    private String address;
     private String city;
-    private String postalCode;
+    private String district;
+    private String ward;
 }

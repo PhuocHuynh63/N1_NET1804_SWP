@@ -24,8 +24,8 @@ public class UserController {
      *
      */
 
-    //Create user
-    @PostMapping("/create_user")
+    //sign up user
+    @PostMapping("/signup")
     public User createUser(@RequestBody @Valid UserCreateRequest request) {
         return userService.createUser(request);
     }
