@@ -10,13 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductSkuResponse {
+public class InventoryResponse {
 
     private int productSkuId;
     private Product product;
     private ProductAttribute sizeAttributeId;
     private ProductAttribute colorAttributeId;
-    private String sku;
-    private double price;
     private int quantity;
 }

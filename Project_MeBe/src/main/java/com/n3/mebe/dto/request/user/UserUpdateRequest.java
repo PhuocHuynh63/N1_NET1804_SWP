@@ -17,11 +17,8 @@ public class UserUpdateRequest {
     private String lastName;
     private String email;
     private String password;
-    private String role;
     private Date birthOfDate;
     private String phoneNumber;
-    private int point;
-    private Date createAt;
-    private Date updateAt;
-    private Date deleteAt;
+
+
 }

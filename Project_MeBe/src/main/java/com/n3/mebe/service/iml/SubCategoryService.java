@@ -36,7 +36,7 @@ public class SubCategoryService implements ISubCategoryService {
 
         subCategory.setCategory(category);
         subCategory.setName(request.getName());
-        subCategory.setDescription(request.getDescription());
+        subCategory.setSlug(request.getSlug());
         return subCategoryRepository.save(subCategory);
     }// </editor-fold>
 
@@ -71,7 +71,7 @@ public class SubCategoryService implements ISubCategoryService {
            subCategoryResponse.setCategory_parent(subCategory.getCategory().getName());
 
            subCategoryResponse.setName(subCategory.getName());
-           subCategoryResponse.setDescription(subCategory.getDescription());
+           subCategoryResponse.setSlug(subCategory.getSlug());
            subCategoryResponses.add(subCategoryResponse);
        }
 

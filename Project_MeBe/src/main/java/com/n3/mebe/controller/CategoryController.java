@@ -1,7 +1,7 @@
 package com.n3.mebe.controller;
 
 
-import com.n3.mebe.dto.request.category.CreateCategoryRequest;
+import com.n3.mebe.dto.request.category.CategoryRequest;
 import com.n3.mebe.dto.response.category.CategoryResponse;
 
 import com.n3.mebe.entity.Category;
@@ -25,12 +25,12 @@ public class CategoryController {
      */
 
     @PostMapping("/create_cate")
-    public Category createCategory(@RequestBody CreateCategoryRequest request) {
+    public Category createCategory(@RequestBody CategoryRequest request) {
         return categoryService.createCategory(request);
     }
 
     @PutMapping("/update_cate/cateId={id}")
-    public Category updateCategory(@PathVariable("id") int id, @RequestBody CreateCategoryRequest request) {
+    public Category updateCategory(@PathVariable("id") int id, @RequestBody CategoryRequest request) {
         return categoryService.updateCategory(id,request);
     }
 

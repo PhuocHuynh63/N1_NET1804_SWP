@@ -16,16 +16,12 @@ import java.util.Date;
 @NoArgsConstructor
 public class UserCreateRequest {
 
-    private String avatar;
-    @NotBlank(message = "first name must not be bank!")
     private String firstName;
     private String lastName;
+    private String username;
     private String email;
     private String password;
-    @NotEmpty( message = "Must be have")
-    private String role;
     private Date birthOfDate;
     private String phoneNumber;
-    private int point;
 
 }

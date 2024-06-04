@@ -36,19 +36,19 @@ public class AddressSerivce implements IAddressService {
     @Override
     public Address createAddress(int id,CreateAddressRequest request) {
 
-        User user = userRepository.findById(id).orElseThrow( () -> new AppException(ErrorCode.NO_USER_EXIST));
+        // lấy user dựa vào id của user
+        User user = userRepository.findById(id)
+                .orElseThrow( () -> new AppException(ErrorCode.NO_USER_EXIST));
 
         Address address = new Address();
 
         address.setUser(user);
         address.setDefault(request.isDefault());
-        address.setAddressLine1(request.getAddressLine1());
-        address.setAddressLine2(request.getAddressLine2());
-        address.setCity(request.getCity());
-        address.setCountry(request.getCountry());
-        address.setPostalCode(request.getPostalCode());
         address.setTitle(request.getTitle());
-
+        address.setAddress(request.getAddress());
+        address.setCity(request.getCity());
+        address.setDistrict(request.getDistrict());
+        address.setWard(request.getWard());
 
         return addressRepository.save(address);
     }// </editor-fold>
@@ -57,18 +57,16 @@ public class AddressSerivce implements IAddressService {
     @Override
     public Address updateAddress(int addressId, UpdateAddressRequest request) {
 
+        // Lấy ra địa chỉ dựa vào Id của địa chỉ
         Address address = addressRepository.findById(addressId)
                 .orElseThrow( () -> new AppException(ErrorCode.Address_NO_EXIST));
 
-
-
         address.setDefault(request.isDefault());
-        address.setAddressLine1(request.getAddressLine1());
-        address.setAddressLine2(request.getAddressLine2());
-        address.setCity(request.getCity());
-        address.setCountry(request.getCountry());
-        address.setPostalCode(request.getPostalCode());
         address.setTitle(request.getTitle());
+        address.setAddress(request.getAddress());
+        address.setCity(request.getCity());
+        address.setDistrict(request.getDistrict());
+        address.setWard(request.getWard());
 
 
         return addressRepository.save(address);
@@ -110,13 +108,12 @@ public class AddressSerivce implements IAddressService {
 
             //add địa chỉ của user dể response
             addressResponse.setAddressId(address.getAddressId());
-            addressResponse.setTitle(address.getTitle());
-            addressResponse.setAddressLine1(address.getAddressLine1());
-            addressResponse.setAddressLine2(address.getAddressLine2());
-            addressResponse.setCountry(address.getCountry());
-            addressResponse.setCity(address.getCity());
             addressResponse.setDefault(address.isDefault());
-            addressResponse.setPostalCode(address.getPostalCode());
+            addressResponse.setTitle(address.getTitle());
+            addressResponse.setAddress(address.getAddress());
+            addressResponse.setCity(address.getCity());
+            addressResponse.setDistrict(address.getDistrict());
+            addressResponse.setWard(address.getWard());
 
             addressResponsesList.add(addressResponse);
         }

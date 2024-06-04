@@ -4,6 +4,8 @@ import com.n3.mebe.entity.OrderDetail;
 import com.n3.mebe.entity.Inventory;
 import com.n3.mebe.entity.Review;
 import com.n3.mebe.entity.SubCategory;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,16 +17,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductRequest {
-    private String name;
-    private String img;
-    private String description;
     private SubCategory subCategory;
-    private int numberView;
-    private boolean isFlashSale;
+    private String slug;
+    private String name;
+    private String images;
+    private String description;
+    private float price;
+    private float salePrice;
     private String status;
-    private Date createAt;
-    private Date updateAt;
-    private Set<Inventory> inventories;
-    private Set<Review> reviewsProducts;
-    private Set<OrderDetail> orderDetails;
+    private int totalSold;
+    private int productView;
+
 }

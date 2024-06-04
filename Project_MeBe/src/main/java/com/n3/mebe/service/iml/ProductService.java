@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,18 +33,20 @@ public class ProductService implements IProductService {
             throw new AppException(ErrorCode.PRODUCT_NAME_EXIST);
         }
         Product product = new Product();
-        product.setName(productRequest.getName());
-        product.setImg(productRequest.getImg());
-        product.setDescription(productRequest.getDescription());
+
         product.setSubCategory(productRequest.getSubCategory());
-        product.setNumberView(productRequest.getNumberView());
-        product.setFlashSale(productRequest.isFlashSale());
+        product.setSlug(productRequest.getSlug());
+        product.setName(productRequest.getName());
+        product.setImages(productRequest.getImages());
+        product.setDescription(productRequest.getDescription());
+        product.setPrice(productRequest.getPrice());
+        product.setSalePrice(productRequest.getSalePrice());
         product.setStatus(productRequest.getStatus());
-        product.setCreateAt(productRequest.getCreateAt());
-        product.setUpdateAt(productRequest.getUpdateAt());
-        product.setInventories(productRequest.getInventories());
-        product.setReviewsProducts(productRequest.getReviewsProducts());
-        product.setOrderDetails(productRequest.getOrderDetails());
+        product.setTotalSold(productRequest.getTotalSold());
+        product.setProductView(productRequest.getProductView());
+        Date now = new Date();
+        product.setCreateAt(now);
+        product.setUpdateAt(now);
 
         return iProductRespository.save(product);
     }// </editor-fold>
@@ -52,20 +55,21 @@ public class ProductService implements IProductService {
     @Override
     public Product updateProduct(int id, ProductRequest productRequest) {
         Product product = iProductRespository.findById(id).
-                orElseThrow(() -> new RuntimeException("Product not found"));
+                orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NO_EXIST));
 
-        product.setName(productRequest.getName());
-        product.setImg(productRequest.getImg());
-        product.setDescription(productRequest.getDescription());
+
         product.setSubCategory(productRequest.getSubCategory());
-        product.setNumberView(productRequest.getNumberView());
-        product.setFlashSale(productRequest.isFlashSale());
+        product.setSlug(productRequest.getSlug());
+        product.setName(productRequest.getName());
+        product.setImages(productRequest.getImages());
+        product.setDescription(productRequest.getDescription());
+        product.setPrice(productRequest.getPrice());
+        product.setSalePrice(productRequest.getSalePrice());
         product.setStatus(productRequest.getStatus());
-        product.setCreateAt(productRequest.getCreateAt());
-        product.setUpdateAt(productRequest.getUpdateAt());
-        product.setInventories(productRequest.getInventories());
-        product.setReviewsProducts(productRequest.getReviewsProducts());
-        product.setOrderDetails(productRequest.getOrderDetails());
+        product.setTotalSold(productRequest.getTotalSold());
+        product.setProductView(productRequest.getProductView());
+        Date now = new Date();
+        product.setUpdateAt(now);
 
         return  iProductRespository.save(product);
     }// </editor-fold>
@@ -102,13 +106,17 @@ public class ProductService implements IProductService {
 
         ProductResponse productResponse = new ProductResponse();
 
-        productResponse.setName(product.getName());
-        productResponse.setImg(product.getImg());
-        productResponse.setDescription(product.getDescription());
+
         productResponse.setSubCategory(product.getSubCategory());
-        productResponse.setNumberView(product.getNumberView());
-        productResponse.setFlashSale(product.isFlashSale());
+        productResponse.setSlug(product.getSlug());
+        productResponse.setName(product.getName());
+        productResponse.setImages(product.getImages());
+        productResponse.setDescription(product.getDescription());
+        productResponse.setPrice(product.getPrice());
+        productResponse.setSalePrice(product.getSalePrice());
         productResponse.setStatus(product.getStatus());
+        productResponse.setTotalSold(product.getTotalSold());
+        productResponse.setProductView(product.getProductView());
         productResponse.setCreateAt(product.getCreateAt());
         productResponse.setUpdateAt(product.getUpdateAt());
 
@@ -128,15 +136,21 @@ public class ProductService implements IProductService {
         List<Product> productList = getListProductBySubCateName(cate);
         for (Product product : productList) {
             ProductResponse productResponse = new ProductResponse();
-            productResponse.setName(product.getName());
-            productResponse.setImg(product.getImg());
-            productResponse.setDescription(product.getDescription());
+
             productResponse.setSubCategory(product.getSubCategory());
-            productResponse.setNumberView(product.getNumberView());
-            productResponse.setFlashSale(product.isFlashSale());
+            productResponse.setSlug(product.getSlug());
+            productResponse.setName(product.getName());
+            productResponse.setImages(product.getImages());
+            productResponse.setDescription(product.getDescription());
+            productResponse.setPrice(product.getPrice());
+            productResponse.setSalePrice(product.getSalePrice());
             productResponse.setStatus(product.getStatus());
+            productResponse.setTotalSold(product.getTotalSold());
+            productResponse.setProductView(product.getProductView());
             productResponse.setCreateAt(product.getCreateAt());
             productResponse.setUpdateAt(product.getUpdateAt());
+
+            //add vào list
             productResponseList.add(productResponse);
         }
         return productResponseList;
@@ -145,24 +159,29 @@ public class ProductService implements IProductService {
     // <editor-fold default state="collapsed" desc="Get List Product By Id Or Name">
     @Override
     public List<ProductResponse> getListProductByIdOrName(int id, String name) {
-        List<Product> product = iProductRespository.findByProductIdOrName(id, name);
+        List<Product> productList = iProductRespository.findByProductIdOrName(id, name);
 
-        if(product == null) {
+        if(productList == null) {
             throw new AppException(ErrorCode.PRODUCT_NO_EXIST);
         }
 
         List<ProductResponse> productResponseList = new ArrayList<>();
-        for(Product p : product) {
+        for(Product product : productList) {
             ProductResponse productResponse = new ProductResponse();
-            productResponse.setName(p.getName());
-            productResponse.setImg(p.getImg());
-            productResponse.setDescription(p.getDescription());
-            productResponse.setSubCategory(p.getSubCategory());
-            productResponse.setNumberView(p.getNumberView());
-            productResponse.setFlashSale(p.isFlashSale());
-            productResponse.setStatus(p.getStatus());
-            productResponse.setCreateAt(p.getCreateAt());
-            productResponse.setUpdateAt(p.getUpdateAt());
+
+            productResponse.setSubCategory(product.getSubCategory());
+            productResponse.setSlug(product.getSlug());
+            productResponse.setName(product.getName());
+            productResponse.setImages(product.getImages());
+            productResponse.setDescription(product.getDescription());
+            productResponse.setPrice(product.getPrice());
+            productResponse.setSalePrice(product.getSalePrice());
+            productResponse.setStatus(product.getStatus());
+            productResponse.setTotalSold(product.getTotalSold());
+            productResponse.setProductView(product.getProductView());
+            productResponse.setCreateAt(product.getCreateAt());
+            productResponse.setUpdateAt(product.getUpdateAt());
+
             productResponseList.add(productResponse);
         }
         return productResponseList;
