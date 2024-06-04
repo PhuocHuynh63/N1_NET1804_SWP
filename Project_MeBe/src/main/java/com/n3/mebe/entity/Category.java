@@ -18,11 +18,11 @@ public class Category {
     @Column(name = "category_id")
     private int categoryId;
 
-    @Column(name = "name")
+    @Column(name = "[name]")
     private String name;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "[slug]")
+    private String slug;
 
     @OneToMany(mappedBy = "category")
     private Set<SubCategory> subCategories;

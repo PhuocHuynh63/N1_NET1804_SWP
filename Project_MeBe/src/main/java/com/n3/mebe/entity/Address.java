@@ -26,17 +26,12 @@ public class Address {
 
     private String title;
 
-    @Column(name = "address_line_1")
-    private String addressLine1;
-
-    @Column(name = "address_line_2")
-    private String addressLine2;
-
-    private String country;
+    @Column(name = "[address]")
+    private String address;
 
     private String city;
 
-    @Column(name = "postal_code")
-    private String postalCode;
+    private String district;
+    private String ward;
 
 }

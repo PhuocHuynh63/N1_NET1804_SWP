@@ -41,7 +41,7 @@ public class ProductService implements IProductService {
         product.setStatus(productRequest.getStatus());
         product.setCreateAt(productRequest.getCreateAt());
         product.setUpdateAt(productRequest.getUpdateAt());
-        product.setProductSkuses(productRequest.getProductSkuses());
+        product.setInventories(productRequest.getInventories());
         product.setReviewsProducts(productRequest.getReviewsProducts());
         product.setOrderDetails(productRequest.getOrderDetails());
 
@@ -63,7 +63,7 @@ public class ProductService implements IProductService {
         product.setStatus(productRequest.getStatus());
         product.setCreateAt(productRequest.getCreateAt());
         product.setUpdateAt(productRequest.getUpdateAt());
-        product.setProductSkuses(productRequest.getProductSkuses());
+        product.setInventories(productRequest.getInventories());
         product.setReviewsProducts(productRequest.getReviewsProducts());
         product.setOrderDetails(productRequest.getOrderDetails());
 

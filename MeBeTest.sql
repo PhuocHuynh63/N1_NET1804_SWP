@@ -25,11 +25,11 @@ GO
 
 INSERT INTO [user] (avatar, first_name, last_name, username, email, [password], birth_date, [role], phone, point, [status])
 VALUES
-    ('avatar1.jpg', N'Nguyễn', N'Văn A', N'user1', 'user1@example.com', 'password1', '1990-01-01', 'admin', '0123456789', 100, N'active'),
-    ('avatar2.jpg', N'Trần', N'Thị B', N'user2', 'user2@example.com', 'password2', '1995-05-10', 'user', '0987654321', 50, N'active'),
-    ('avatar3.jpg', N'Lê', N'Văn C', N'user3', 'user3@example.com', 'password3', '1988-12-15', 'user', '0909090909', 75, N'inactive'),
-    ('avatar4.jpg', N'Phạm', N'Thị D', N'user4', 'user4@example.com', 'password4', '1993-07-20', 'user', '0918273645', 200, N'active'),
-    ('avatar5.jpg', N'Hoàng', N'Văn E', N'user5', 'user5@example.com', 'password5', '1985-03-25', 'admin', '0936251478', 150, N'active');
+	-- 123/ 1234 / 555 
+    ('avatar1.jpg', N'Nguyễn', N'Văn A', N'user1', 'user1@example.com', '$2a$10$C0Fe7kS86ZiupWiZwKJRbeiY7IMeiY9MfZhH09ZcV46eyvAbDjyRW', '1990-01-01', 'admin', '0123456789', 100, N'active'),
+    ('avatar2.jpg', N'Trần', N'Thị B', N'user2', 'user2@example.com', '$2a$10$GAB3II6hwaJ.dU9FQ6VSL.46Hl5Oi0V12u6fNjm0WbRVokLn7ERfO', '1995-05-10', 'staff', '0987654321', 50, N'active'),
+    ('avatar3.jpg', N'Lê', N'Văn C', N'user3', 'user3@example.com', '$2a$10$MicDh3ueKAAtAoImX0fmA.nsStMOFIBKhbUpF7a0IploKJjo.tI1S', '1988-12-15', 'member', '0909090909', 75, N'inactive');
+
 
 -- Tạo bảng Address
 CREATE TABLE [address] (
@@ -186,7 +186,7 @@ CREATE TABLE product (
     product_id INT PRIMARY KEY IDENTITY(1,1),
     subcategory_id INT,
 	slug NVARCHAR(100),
-	name NVARCHAR(255),
+	[name] NVARCHAR(255),
 	images NVARCHAR(MAX),
 	[description] NVARCHAR(MAX),
 	price DECIMAL(10, 2),
@@ -241,8 +241,8 @@ CREATE TABLE review (
 CREATE TABLE voucher (
     voucher_id INT PRIMARY KEY IDENTITY(1,1),
 	voucher_code NVARCHAR(50),
-	discount_type 	NVARCHAR(50),
-	discount_value 	DECIMAL(10, 2),
+	discount_type NVARCHAR(50),
+	discount_value DECIMAL(10, 2),
 	[name] NVARCHAR(255),
 	cost DECIMAL(10, 2),
 	quantity INT,
@@ -295,7 +295,7 @@ CREATE TABLE payment (
 	payment_type NVARCHAR(50),
 	payment_method NVARCHAR(50),
 	payment_status NVARCHAR(50),
-	transaction_reference 	NVARCHAR(100),
+	transaction_reference NVARCHAR(100),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 	FOREIGN KEY (order_id) REFERENCES [order](order_id),

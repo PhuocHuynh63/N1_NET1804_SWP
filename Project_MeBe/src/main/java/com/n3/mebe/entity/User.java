@@ -18,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "[user_id]")
     int userId;
 
      String avatar;
@@ -28,19 +28,24 @@ public class User {
     @Column(name = "last_name")
      String lastName;
 
-    String username;
+     String username;
      String email;
 
      String password;
-     String role;
+
 
     @Column(name = "[birth_date]")
      Date birthOfDate;
+
+     String role;
 
     @Column(name = "phone")
      String phoneNumber;
 
      int point;
+
+    @Column(name = "[status]")
+     String status;
 
     @Column(name = "created_at")
      Date createAt;

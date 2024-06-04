@@ -1,7 +1,7 @@
 package com.n3.mebe.dto.request.product;
 
 import com.n3.mebe.entity.OrderDetail;
-import com.n3.mebe.entity.ProductSkus;
+import com.n3.mebe.entity.Inventory;
 import com.n3.mebe.entity.Review;
 import com.n3.mebe.entity.SubCategory;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class ProductRequest {
     private String status;
     private Date createAt;
     private Date updateAt;
-    private Set<ProductSkus> productSkuses;
+    private Set<Inventory> inventories;
     private Set<Review> reviewsProducts;
     private Set<OrderDetail> orderDetails;
 }

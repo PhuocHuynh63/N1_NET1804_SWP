@@ -24,7 +24,8 @@ public class SubCategory {
     private Category category;
 
     private String name;
-    private String description;
+
+    private String slug;
 
     @OneToMany(mappedBy = "subCategory")
     private Set<Product> product;

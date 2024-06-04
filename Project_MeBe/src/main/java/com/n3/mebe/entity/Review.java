@@ -27,10 +27,13 @@ public class Review {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private String rating;
+    private String rate;
     private String comment;
 
     @Column(name = "created_at")
     private Date createAt;
+
+    @Column(name = "update_at")
+    private Date updateAt;
 
 }

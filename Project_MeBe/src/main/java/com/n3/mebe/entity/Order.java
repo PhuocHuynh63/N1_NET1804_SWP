@@ -25,37 +25,38 @@ public class Order {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "payment_id")
-    private PaymentDetail payment;
-
-    @ManyToOne
     @JoinColumn(name = "voucher_id")
     private Voucher voucher;
 
+    @ManyToOne
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
+
+    @Column(name = "[status]")
+    private String status;
+
     @Column(name = "delivery_fee")
     private float deliveryFee;
-    private String status;
+
+    @Column(name = "total_amount")
+    private float totalAmount;
+
+    @Column(name = "deposite_amount")
+    private float depositeAmount;
+
+    @Column(name = "order_type")
+    private String orderType;
+
+    @Column(name = "payment_status")
+    private String paymentStatus;
+
+    private String note;
 
     @Column(name = "created_at")
     private Date createdAt;
 
     @Column(name = "updated_at")
     private Date updatedAt;
-
-    @Column(name = "email_sent")
-    private boolean emailSent;
-
-    @Column(name = "is_preorder")
-    private boolean isPreOrder;
-
-    @Column(name = "preorder_type")
-    private String preorderType;
-
-    @Column(name = "paid_amount")
-    private float paidAmount;
-
-    @Column(name = "remaining_amount")
-    private float remainingAmount;
 
     @OneToMany(mappedBy = "order")
     private Set<OrderDetail> orderDetails;

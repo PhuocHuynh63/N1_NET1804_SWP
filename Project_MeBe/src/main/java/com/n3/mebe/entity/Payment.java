@@ -12,19 +12,31 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "payment_detail")
-public class PaymentDetail {
+@Table(name = "payment")
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private int paymentId;
-    private float amount;
-    private String provider;
 
-    @Column(name = "transaction_code")
-    private String transactionCode;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    private float amount;
+
+    @Column(name = "payment_type")
+    private String paymentType;
+
+    @Column(name = "payment_method")
+    private String paymentMethod;
+
+    @Column(name = "payment_status")
     private String status;
+
+    @Column(name = "transaction_reference")
+    private String transactionReference;
 
     @Column(name = "created_at")
     private Date createAt;
