@@ -5,9 +5,10 @@ import Types from './redux/types';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Layout from './pages/layout';
+import Layout from './pages/layout';
 import './static/css/bootstrap.min.css';
 import path from './constants/path';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ function App() {
     <Router>
       <ToastContainer />
       <Routes>
-        {/* <Route path="*" element={<Layout />} /> */}
+          <Route path="*" element={<Layout />} />
       </Routes>
     </Router>
   );

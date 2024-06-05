@@ -11,22 +11,25 @@ interface IProps {
 }
 
 const REQUEST_API = async ({ method, url, data, token }: IProps) => {
-    
-    const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-    };
-
-    const config = { method, url, data, headers };
-
-    try {
-        const res = await axios(config);
-        if (res.status === 200) {
-            return res.data;
-        }
-    } catch (e) {
-            throw new Error();
-        }
+  //   const Token = await AsyncStorage.getItem(ASYN.token);
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+    // "Access-Control-Allow-Origin": "*",
+  };
+  const config = { method, url, data, headers };
+  try {
+    const res = await axios(config);
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (e) {
+    if (String(e).indexOf("Network Error") !== -1) {
+      throw new Error("Không có internet");
+    }
+    else {
+      throw new Error();
+    }
+  }
 };
-
 export {REQUEST_API};

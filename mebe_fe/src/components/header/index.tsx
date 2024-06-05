@@ -17,12 +17,10 @@ const Header = () => {
   const user = useSelector((state: RootState) => state.AuthReducer.user);
   const cart: Order[] = useSelector((state: RootState) => state.CartReducer.cart);
   const [cartItem, setCartItem] = React.useState<OrderItem[]>([]);
-  // const [category, setCategory] = React.useState<Category[]>([]);
   const [category1, setCategory1] = React.useState<Category[]>([]);
   const [category2, setCategory2] = React.useState<Category[]>([]);
   const [showMenu, setShowMenu] = React.useState(false);
   const [searchLaptop, setSearchLaptop] = React.useState(false);
-  const [searchMoblie, setSearchMobile] = React.useState(false);
   const [keyword, setKeyword] = React.useState('');
   const getCategory = async (id: number) => {
     try {
@@ -55,14 +53,7 @@ const Header = () => {
       try {
         const res = await cartApi.getCart(user.id);
         if (res.data.status) {
-          // setCarts(res.data.data);
           setCartItem(res.data.data.items);
-        } else {
-          // toast.error(`${res.data.data}`, {
-          //   position: 'top-right',
-          //   pauseOnHover: false,
-          //   theme: 'dark',
-          // });
         }
       } catch (error) {
         console.error(error);
@@ -77,15 +68,15 @@ const Header = () => {
       navigate(path.searchProduct, { state: keyword });
       setKeyword('');
       setSearchLaptop(false);
-      setSearchMobile(false);
     }
   };
   const category: Category[] = [...category1, ...category2];
   React.useEffect(() => {
     setShowMenu(false);
     setSearchLaptop(false);
-    setSearchMobile(false);
   }, [pathname]);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>
       <header className="mainHeader--height" style={{ minHeight: 74 }}>
@@ -126,7 +117,7 @@ const Header = () => {
                     <a href="#">
                       <img
                         src={Images.logo}
-                        alt="CRKing7"
+                        alt="Mebe"
                         className="img-responsive logoimg ls-is-cached lazyloaded"
                         style={{ width: '150px' }}
                       />
@@ -138,13 +129,13 @@ const Header = () => {
                   <nav className="navbar-mainmenu">
                     <ul className="menuList-main">
                       <li className="has-submenu active ">
-                        <Link to={path.home} title="Trang chủ">
-                          Trang chủ
+                        <Link to={path.home} title="Home">
+                          Home
                         </Link>
                       </li>
                       <li className="has-submenu  fullwidth">
-                        <a onClick={() => navigate(path.product, { state: { categoryId: 28 } })} title="Áo nam">
-                          Áo nam
+                        <a onClick={() => navigate(path.product, { state: { categoryId: 28 } })} title="Baby boy">
+                          Baby boy
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={12}
@@ -197,12 +188,12 @@ const Header = () => {
                                 })}
                             </div>
                             <div className="menuBanner">
-                              <a href="collections/ao-nam">
+                              <a href="">
                                 <img
                                   className=" lazyloaded"
-                                  src="//theme.hstatic.net/200000690725/1001078549/14/mega_menu_3_img.jpg?v=169"
-                                  data-src="//theme.hstatic.net/200000690725/1001078549/14/mega_menu_3_img.jpg?v=169"
-                                  alt="Áo nam"
+                                  src=""
+                                  data-src=""
+                                  alt="Baby boy"
                                 />
                               </a>
                             </div>
@@ -212,10 +203,10 @@ const Header = () => {
                       <li className="has-submenu  fullwidth">
                         <a
                           className="cursor-pointer"
-                          title="Quần nam"
+                          title="Baby girl"
                           onClick={() => navigate(path.product, { state: { categoryId: 29 } })}
                         >
-                          Quần nam
+                          Baby girl
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={12}
@@ -268,31 +259,31 @@ const Header = () => {
                                 })}
                             </div>
                             <div className="menuBanner">
-                              <a href="collections/quan-nam">
+                              <a href="">
                                 <img
                                   className=" lazyloaded"
-                                  src="//theme.hstatic.net/200000690725/1001078549/14/mega_menu_2_img.jpg?v=169"
-                                  data-src="//theme.hstatic.net/200000690725/1001078549/14/mega_menu_2_img.jpg?v=169"
-                                  alt="Quần nam"
+                                  src=""
+                                  data-src=""
+                                  alt="Baby girl"
                                 />
                               </a>
                             </div>
                           </div>
                         </div>
                       </li>
-                      <li className="has-submenu  ">
-                        <a onClick={() => navigate(path.product)} title="Sản phẩm" className="cursor-pointer">
-                          Sản phẩm
+                      <li className="has-submenu ">
+                        <a onClick={() => navigate(path.product)} title="Newborn" className="cursor-pointer">
+                          Newborn
                         </a>
                       </li>
                       <li className="has-submenu  ">
-                        <a title="Bài viết" className="cursor-pointer" onClick={() => navigate(path.article)}>
-                          Bài viết
+                        <a title="Offers" className="cursor-pointer" onClick={() => navigate(path.offers)}>
+                          Offers
                         </a>
                       </li>
                       <li className="">
-                        <Link to={path.contact} title="Liên hệ">
-                          Liên hệ
+                        <Link to={path.contact} title="Sale">
+                          Hot Sale
                         </Link>
                       </li>
                     </ul>
@@ -318,119 +309,13 @@ const Header = () => {
                         </button>
                       </div>
                     </div>
-                    {/* tìm kiểm mobile */}
-                    <div
-                      className={`header-action-item header-action_search search-mobile d-block d-lg-none ${
-                        searchMoblie ? 'js-action-show' : ''
-                      }`}
-                    >
-                      <div className="header-action_text">
-                        <button
-                          className="header-action__link header-action_clicked"
-                          title="Tìm kiếm"
-                          onClick={() => setSearchMobile(!searchMoblie)}
-                        >
-                          <span className="box-icon">
-                            <svg width={22} height={22} viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M20.8438 19.3203C21.0781 19.5286 21.0781 19.75 20.8438 19.9844L19.9844 20.8438C19.75 21.0781 19.5286 21.0781 19.3203 20.8438L14.5938 16.1172C14.4896 16.013 14.4375 15.9089 14.4375 15.8047V15.2578C12.901 16.5859 11.1302 17.25 9.125 17.25C6.88542 17.25 4.97135 16.4557 3.38281 14.8672C1.79427 13.2786 1 11.3646 1 9.125C1 6.88542 1.79427 4.97135 3.38281 3.38281C4.97135 1.79427 6.88542 1 9.125 1C11.3646 1 13.2786 1.79427 14.8672 3.38281C16.4557 4.97135 17.25 6.88542 17.25 9.125C17.25 11.1302 16.5859 12.901 15.2578 14.4375H15.8047C15.9349 14.4375 16.0391 14.4896 16.1172 14.5938L20.8438 19.3203ZM4.71094 13.5391C5.9349 14.763 7.40625 15.375 9.125 15.375C10.8438 15.375 12.3151 14.763 13.5391 13.5391C14.763 12.3151 15.375 10.8438 15.375 9.125C15.375 7.40625 14.763 5.9349 13.5391 4.71094C12.3151 3.48698 10.8438 2.875 9.125 2.875C7.40625 2.875 5.9349 3.48698 4.71094 4.71094C3.48698 5.9349 2.875 7.40625 2.875 9.125C2.875 10.8438 3.48698 12.3151 4.71094 13.5391Z" />
-                            </svg>
-                            <span className="box-icon--close">
-                              <svg viewBox="0 0 19 19" role="presentation">
-                                <path
-                                  d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
-                                  fillRule="evenodd"
-                                />
-                              </svg>
-                            </span>
-                          </span>
-                        </button>
-                        <span className="box-triangle">
-                          <svg viewBox="0 0 20 9" role="presentation">
-                            <path
-                              d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
-                              fill="#ffffff"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                      <div className="header-action_dropdown">
-                        <div className="header-dropdown_content">
-                          <div className="sitenav-content sitenav-search">
-                            <p className="boxtitle">Tìm kiếm</p>
-                            <div className="search-box wpo-wrapper-search">
-                              <div className="searchform searchform-categoris ultimate-search">
-                                <div className="wpo-search-inner">
-                                  <input
-                                    id="inputSearchAuto-mb"
-                                    className="input-search"
-                                    name="q"
-                                    maxLength={40}
-                                    autoComplete="off"
-                                    type="text"
-                                    size={20}
-                                    placeholder="Tìm kiếm sản phẩm..."
-                                    value={keyword}
-                                    onChange={(e) => setKeyword(e.target.value)}
-                                  />
-                                </div>
-                                <div
-                                  className="btn-search btn cursor-pointor"
-                                  id="search-header-btn"
-                                  onClick={handleSearch}
-                                >
-                                  <svg
-                                    version="1.1"
-                                    className="svg search"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                                    x="0px"
-                                    y="0px"
-                                    viewBox="0 0 24 27"
-                                    xmlSpace="preserve"
-                                  >
-                                    <path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z" />
-                                    <rect
-                                      x={17}
-                                      y={17}
-                                      transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)"
-                                      width={4}
-                                      height={8}
-                                    />
-                                  </svg>
-                                </div>
-                              </div>
-                              <div className="smart-search-wrapper ajaxSearchResults">
-                                <div className="resultsContent" />
-                                <div className="search-suggest">
-                                  <ul>
-                                    <li className="item item-suggest">Gợi ý cho bạn:</li>
-                                    {!!category &&
-                                      !!category.length &&
-                                      category.map((item, i) => (
-                                        <li className="item" key={i}>
-                                          <a
-                                            className="cursor-pointor"
-                                            onClick={() => navigate(path.product, { state: { categoryId: item.id } })}
-                                            title={item.title}
-                                          >
-                                            {item.title},
-                                          </a>
-                                        </li>
-                                      ))}
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+    
                     {/* user */}
                     <div className="header-action-item header-action_account">
                       <div className="header-action_text">
                         <button
                           className="header-action__link  header-action_clicked "
-                          title="Tài khoản"
+                          title="Account"
                           onClick={handleUser}
                         >
                           <span className="box-icon">
@@ -463,8 +348,8 @@ const Header = () => {
                         <button
                           className="header-action__link"
                           id="site-cart-handle"
-                          aria-label="Giỏ hàng"
-                          title="Giỏ hàng"
+                          aria-label="Cart"
+                          title="Cart"
                           onClick={() => navigate(path.cart)}
                         >
                           <span className="box-icon">
@@ -481,7 +366,6 @@ const Header = () => {
                             </span>
                             <span className="count-holder">
                               <span className="count">
-                                {/* {cart.length !== cartItem.length ? `${cartItem.length}` : `${cart.length}`} */}
                                 {cartItem.length}
                               </span>
                             </span>
@@ -496,12 +380,15 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+
+
       <div className="sidebar-main">
         {showMenu && (
           <div className="sitenav-wrapper sitenav-left sitenav-menu js-ajax-menu is-opened" id="js-sitenav-menu">
             <div className="sitenav-inner">
               <div className="sitenav-header">
-                <p className="sitenav-header__title">Danh mục</p>
+                <p className="sitenav-header__title">Category</p>
                 <a className="sitenav-header__btn btn-sitenav-close" onClick={() => setShowMenu(false)}>
                   <svg viewBox="0 0 19 19" role="presentation">
                     <path
@@ -515,80 +402,35 @@ const Header = () => {
                 <div className="menu-mobile--wrap ajax-render-mainmenu">
                   <ul className="menuList-links">
                     <li className="">
-                      <a title="Trang chủ" onClick={() => navigate(path.home)}>
-                        <span>Trang chủ</span>
+                      <a title="Home" onClick={() => navigate(path.home)}>
+                        <span>Home</span>
                       </a>
                     </li>
                     <li
                       className="has-submenu level0 "
                       onClick={() => navigate(path.product, { state: { categoryId: 28 } })}
                     >
-                      <a title="Áo name">Áo nam</a>
+                      <a title="Baby boy">Baby boy</a>
                     </li>
                     <li className="">
-                      <a title="Quần nam" onClick={() => navigate(path.product, { state: { categoryId: 29 } })}>
-                        <span>Quần nam</span>
+                      <a title="Baby girl" onClick={() => navigate(path.product, { state: { categoryId: 29 } })}>
+                        <span>Baby girl</span>
                       </a>
                     </li>
                     <li className="">
-                      <a title="Sản phẩm" onClick={() => navigate(path.product)}>
-                        <span>Sản phẩm</span>
+                      <a title="Newborn" onClick={() => navigate(path.product)}>
+                        <span>Newborn</span>
                       </a>
                     </li>
                     <li className="">
-                      <a title="Bài viết" onClick={() => navigate(path.article)}>
-                        <span>Bài viết</span>
+                      <a title="Offers" onClick={() => navigate(path.offers)}>
+                        <span>Offers</span>
                       </a>
                     </li>
-                    <li className="has-submenu level0 " onClick={() => navigate(path.contact)}>
-                      <a title="Liên hệ">Liên hệ</a>
+                    <li className="has-submenu level0 " onClick={() => navigate(path.hotsale)}>
+                      <a title="Sale">Hot sale</a>
                     </li>
                   </ul>
-                </div>
-              </div>
-              <div className="sitenav-footer">
-                <div className="mobile-menu__section mobile-menu__section--loose">
-                  <p className="mobile-menu__section-title">Bạn cần hỗ trợ?</p>
-                  <div className="mobile-menu__help-wrapper">
-                    <svg className="icon icon--bi-phone" viewBox="0 0 24 24" role="presentation">
-                      <g strokeWidth={2} fill="none" fillRule="evenodd" strokeLinecap="square">
-                        <path d="M17 15l-3 3-8-8 3-3-5-5-3 3c0 9.941 8.059 18 18 18l3-3-5-5z" stroke="#121212" />
-                        <path d="M14 1c4.971 0 9 4.029 9 9m-9-5c2.761 0 5 2.239 5 5" stroke="#121212" />
-                      </g>
-                    </svg>
-                    <a href="tel:0966821574" rel="nofollow">
-                      0966821574
-                    </a>
-                  </div>
-                  <div className="mobile-menu__help-wrapper">
-                    <svg className="icon icon--bi-email" viewBox="0 0 22 22" role="presentation">
-                      <g fill="none" fillRule="evenodd">
-                        <path
-                          stroke="#121212"
-                          d="M.916667 10.08333367l3.66666667-2.65833334v4.65849997zm20.1666667 0L17.416667 7.42500033v4.65849997z"
-                        />
-                        <path
-                          stroke="#121212"
-                          strokeWidth={2}
-                          d="M4.58333367 7.42500033L.916667 10.08333367V21.0833337h20.1666667V10.08333367L17.416667 7.42500033"
-                        />
-                        <path
-                          stroke="#121212"
-                          strokeWidth={2}
-                          d="M4.58333367 12.1000003V.916667H17.416667v11.1833333m-16.5-2.01666663L21.0833337 21.0833337m0-11.00000003L11.0000003 15.5833337"
-                        />
-                        <path
-                          d="M8.25000033 5.50000033h5.49999997M8.25000033 9.166667h5.49999997"
-                          stroke="#121212"
-                          strokeWidth={2}
-                          strokeLinecap="square"
-                        />
-                      </g>
-                    </svg>
-                    <a href="mailto:crking7dev@gmail.com" rel="nofollow">
-                      crking7dev@gmail.com
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -600,7 +442,7 @@ const Header = () => {
         <div className="sidebar-search show">
           <div className="sitenav-search">
             <div className="mini_search_header">
-              <h3 className="d-sm-block d-lg-none">Tìm kiếm </h3>
+              <h3 className="d-sm-block d-lg-none">Search</h3>
             </div>
             <div className="container">
               <div className="row">
@@ -609,7 +451,7 @@ const Header = () => {
                     <a href="#">
                       <img
                         src={Images.logo}
-                        alt="CRKing7"
+                        alt="Mebe"
                         className="img-responsive logoimg ls-is-cached lazyloaded"
                         style={{ width: '150px' }}
                       />
@@ -626,7 +468,7 @@ const Header = () => {
                         autoComplete="off"
                         type="text"
                         size={20}
-                        placeholder="Tìm kiếm sản phẩm..."
+                        placeholder="Search product..."
                         value={keyword}
                         onChange={(e) => setKeyword(e.target.value)}
                       />
@@ -640,7 +482,6 @@ const Header = () => {
                         x="0px"
                         y="0px"
                         viewBox="0 0 24 27"
-                        style={{ enableBackground: 'new 0 0 24 27' }}
                         xmlSpace="preserve"
                       >
                         <path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z" />
