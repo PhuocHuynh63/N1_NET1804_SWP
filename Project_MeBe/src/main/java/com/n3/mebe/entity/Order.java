@@ -28,10 +28,6 @@ public class Order {
     @JoinColumn(name = "voucher_id")
     private Voucher voucher;
 
-    @ManyToOne
-    @JoinColumn(name = "payment_id")
-    private Payment payment;
-
     @Column(name = "[status]")
     private String status;
 

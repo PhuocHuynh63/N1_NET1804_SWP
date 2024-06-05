@@ -44,6 +44,5 @@ public class Payment {
     @Column(name = "updated_at")
     private Date updateAt;
 
-    @OneToMany(mappedBy = "payment")
-    private Set<Order> orders;
+
 }
