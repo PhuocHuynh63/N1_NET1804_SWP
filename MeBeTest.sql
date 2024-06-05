@@ -49,10 +49,7 @@ VALUES
     (1, 1, N'Nhà riêng', N'123 Đường ABC', N'Hà Nội', N'Quận Hoàn Kiếm', N'Phường Hàng Trống'),
     (1, 0, N'Văn phòng', N'456 Đường XYZ', N'Hà Nội', N'Quận Hai Bà Trưng', N'Phường Bạch Đằng'),
     (2, 1, N'Nhà riêng', N'789 Đường DEF', N'Hồ Chí Minh', N'Quận 1', N'Phường Bến Nghé'),
-    (3, 1, N'Nhà riêng', N'147 Đường GHI', N'Đà Nẵng', N'Quận Hải Châu', N'Phường Thanh Bình'),
-    (4, 1, N'Nhà riêng', N'258 Đường JKL', N'Hải Phòng', N'Quận Ngô Quyền', N'Phường Máy Chai'),
-    (5, 1, N'Nhà riêng', N'369 Đường MNO', N'Cần Thơ', N'Quận Ninh Kiều', N'Phường An Hòa'),
-    (5, 0, N'Văn phòng', N'159 Đường PQR', N'Cần Thơ', N'Quận Bình Thủy', N'Phường Long Hòa');
+    (3, 1, N'Nhà riêng', N'147 Đường GHI', N'Đà Nẵng', N'Quận Hải Châu', N'Phường Thanh Bình')
 
 -- Tạo bảng Category
 CREATE TABLE category (

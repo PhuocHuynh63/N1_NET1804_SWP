@@ -4,12 +4,16 @@ package com.n3.mebe.service.iml;
 import com.n3.mebe.dto.request.product.ProductRequest;
 import com.n3.mebe.dto.response.product.ProductResponse;
 import com.n3.mebe.entity.Product;
+import com.n3.mebe.entity.SubCategory;
 import com.n3.mebe.exception.AppException;
 import com.n3.mebe.exception.ErrorCode;
 import com.n3.mebe.repository.IProductRespository;
+import com.n3.mebe.repository.ISubCategoryRepository;
+import com.n3.mebe.service.IFileService;
 import com.n3.mebe.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +25,13 @@ public class ProductService implements IProductService {
     @Autowired
     private IProductRespository iProductRespository;
 
+    @Autowired
+    private IFileService fileServiceImp;
+
+    @Autowired
+    private ISubCategoryRepository iSubCategoryRepository;
+
+
     /**
      *  Request from Client
      *
@@ -28,27 +39,37 @@ public class ProductService implements IProductService {
 
     // <editor-fold default state="collapsed" desc="Create Product">
     @Override
-    public Product createProduct(ProductRequest productRequest) {
-        if (iProductRespository.existsByName(productRequest.getName())){
-            throw new AppException(ErrorCode.PRODUCT_NAME_EXIST);
+    public boolean createProduct(MultipartFile file, int subCategoryId, String slug, String name, String description, float price, float salePrice, String status, int totalSold, int productView) {
+        boolean isInsertedSuccess = false;
+        try {
+        boolean isSaveFileSuccess = fileServiceImp.saveFile(file);
+            if(isSaveFileSuccess) {
+            Product product = new Product();
+            product.setImages(file.getOriginalFilename());
+
+            SubCategory subCategory = iSubCategoryRepository.findBySubCateId(subCategoryId);
+            product.setSubCategory(subCategory);
+
+            product.setSlug(slug);
+            product.setName(name);
+            product.setDescription(description);
+            product.setPrice(price);
+            product.setSalePrice(salePrice);
+            product.setStatus(status);
+            product.setTotalSold(totalSold);
+            product.setProductView(productView);
+
+            Date now = new Date();
+            product.setCreateAt(now);
+            product.setUpdateAt(now);
+
+            iProductRespository.save(product);
+            isInsertedSuccess = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error in insert product" + e.getMessage());
         }
-        Product product = new Product();
-
-        product.setSubCategory(productRequest.getSubCategory());
-        product.setSlug(productRequest.getSlug());
-        product.setName(productRequest.getName());
-        product.setImages(productRequest.getImages());
-        product.setDescription(productRequest.getDescription());
-        product.setPrice(productRequest.getPrice());
-        product.setSalePrice(productRequest.getSalePrice());
-        product.setStatus(productRequest.getStatus());
-        product.setTotalSold(productRequest.getTotalSold());
-        product.setProductView(productRequest.getProductView());
-        Date now = new Date();
-        product.setCreateAt(now);
-        product.setUpdateAt(now);
-
-        return iProductRespository.save(product);
+        return isInsertedSuccess;
     }// </editor-fold>
 
     //  <editor-fold default state="collapsed" desc="Update Product">
@@ -58,10 +79,10 @@ public class ProductService implements IProductService {
                 orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NO_EXIST));
 
 
+        product.setImages(productRequest.getFile().getOriginalFilename());
         product.setSubCategory(productRequest.getSubCategory());
         product.setSlug(productRequest.getSlug());
         product.setName(productRequest.getName());
-        product.setImages(productRequest.getImages());
         product.setDescription(productRequest.getDescription());
         product.setPrice(productRequest.getPrice());
         product.setSalePrice(productRequest.getSalePrice());
