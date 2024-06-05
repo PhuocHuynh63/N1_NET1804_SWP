@@ -121,7 +121,7 @@ public class UserService implements IUserService {
 
             UserResponse userResponse = new UserResponse();
 
-            userResponse.setId(userResponse.getId());
+            userResponse.setId(user.getUserId());
             userResponse.setAvatar(user.getAvatar());
             userResponse.setFirstName(user.getFirstName());
             userResponse.setLastName(user.getLastName());

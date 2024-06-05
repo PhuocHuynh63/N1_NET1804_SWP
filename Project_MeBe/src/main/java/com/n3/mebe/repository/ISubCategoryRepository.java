@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ISubCategoryRepository extends JpaRepository<SubCategory, Integer> {
-
+    SubCategory findBySubCateId(int id);
 
 }

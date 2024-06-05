@@ -15,4 +15,5 @@ public interface ISubCategoryService {
     SubCategory updateSubCategory(SubCategoryRequest request);
 
     void deleteSubCategory(int subCategoryId);
+
 }

@@ -2,11 +2,18 @@ package com.n3.mebe.controller;
 
 
 import com.n3.mebe.dto.request.product.ProductRequest;
+import com.n3.mebe.dto.response.ResponseData;
 import com.n3.mebe.dto.response.product.ProductResponse;
 import com.n3.mebe.entity.Product;
+import com.n3.mebe.service.IFileService;
 import com.n3.mebe.service.iml.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,6 +25,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private IFileService fileService;
+
     /**
      * Request from Client
      *
@@ -25,8 +35,20 @@ public class ProductController {
 
     //Create a product
     @PostMapping("/create_product")
-    Product createProduct(@RequestBody ProductRequest productRequest) {
-        return productService.createProduct(productRequest);
+    public ResponseEntity<?> createProduct(@RequestParam MultipartFile file,
+                          @RequestParam int subCategory,
+                          @RequestParam String slug,
+                          @RequestParam String name,
+                          @RequestParam String description,
+                          @RequestParam float price,
+                          @RequestParam float salePrice,
+                          @RequestParam String status,
+                          @RequestParam int totalSold,
+                          @RequestParam int productView) {
+        ResponseData responseData = new ResponseData();
+        boolean isSuccess = productService.createProduct(file, subCategory, slug, name, description, price, salePrice, status, totalSold, productView);
+        responseData.setData(isSuccess);
+        return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
 
     //Update a product by id
@@ -70,5 +92,7 @@ public class ProductController {
     List<ProductResponse> searchProduct(@PathVariable("id") int id, @PathVariable("name") String name) {
         return productService.getListProductByIdOrName(id, name);
     }
+
+
 
 }
