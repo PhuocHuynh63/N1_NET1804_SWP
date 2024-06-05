@@ -22,31 +22,30 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "subcategory_id")
-
     private SubCategory subCategory;
 
     private String slug;
 
-    @JoinColumn(name = "[name]")
+    @Column(name = "[name]")
     private String name;
 
     private String images;
 
-    @JoinColumn(name = "[description]")
+    @Column(name = "[description]")
     private String description;
 
     private float price;
 
-    @JoinColumn(name = "sale_price")
+    @Column(name ="sale_price")
     private float salePrice;
 
-    @JoinColumn(name = "[status]")
+    @Column(name ="[status]")
     private String status;
 
-    @JoinColumn(name = "total_sold")
+    @Column(name = "total_sold")
     private int totalSold;
 
-    @JoinColumn(name = "product_view")
+    @Column(name = "product_view")
     private int productView;
 
     @Column(name = "created_at")

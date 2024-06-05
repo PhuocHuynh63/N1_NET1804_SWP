@@ -198,16 +198,16 @@ CREATE TABLE product (
 
 INSERT INTO product (subcategory_id, slug, name, images, [description], price, sale_price, [status], total_sold, product_view)
 VALUES
-    (14, N'sbps-nuvi-grow-110ml-1y', N'SBPS Nuvi Grow 110ml 1Y+', N'nuvi_grow.jpg', N'DINH DƯỠNG TỐI ƯU CHIỀU CAO', 32000.00, NULL, N'Còn hàng', 0, 0),
+    (14, N'sbps-nuvi-grow-110ml-1y', N'SBPS Nuvi Grow 110ml 1Y+', N'nuvi_grow.jpg', N'DINH DƯỠNG TỐI ƯU CHIỀU CAO', 32000.00, 0, N'Còn hàng', 0, 0),
     (14, N'sua-nuvi-grow-iq-step-3-900g', N'Sữa Nuvi Grow IQ Step 3 900g', N'nuvi_grow_iq_step3.jpg', N'Sữa bột Nuvi Grow IQ Step 3 với công thức IQ Advance', 385000.00, 370000.00, N'Còn hàng', 0, 0),
     (15, N'sua-bot-dielac-grow-plus-2-400g', N'Sữa bột Dielac Grow Plus 2 400g', N'dielac_grow_plus_2.jpg', N'Sữa bột Dielac Grow Plus 2 400g dành cho trẻ từ 1-2 tuổi', 135000.00, 130000.00, N'Còn hàng', 0, 0),
     (15, N'sua-bot-dielac-alpha-gold-iq-step-3-900g', N'Sữa bột Dielac Alpha Gold IQ Step 3 900g', N'dielac_alpha_gold_iq_step3.jpg', N'Sữa bột Dielac Alpha Gold IQ Step 3 900g cho trẻ từ 1-2 tuổi', 405000.00, 390000.00, N'Còn hàng', 0, 0),
-    (16, N'sua-pha-san-nestle-nan-optipro-so-4-lon-800ml', N'Sữa pha sẵn Nestle NAN Optipro Số 4 lon 800ml', N'nan_optipro_4.jpg', N'Sữa pha sẵn Nestle NAN Optipro Số 4 lon 800ml phù hợp với trẻ từ 2 tuổi trở lên', 85000.00, NULL, N'Còn hàng', 0, 0),
+    (16, N'sua-pha-san-nestle-nan-optipro-so-4-lon-800ml', N'Sữa pha sẵn Nestle NAN Optipro Số 4 lon 800ml', N'nan_optipro_4.jpg', N'Sữa pha sẵn Nestle NAN Optipro Số 4 lon 800ml phù hợp với trẻ từ 2 tuổi trở lên', 85000.00, 0, N'Còn hàng', 0, 0),
     (16, N'sua-pha-san-nestle-nan-optipro-so-3-6x800ml', N'Sữa pha sẵn Nestle NAN Optipro Số 3 6x800ml', N'nan_optipro_3.jpg', N'Lốc 6 lon sữa pha sẵn Nestle NAN Optipro Số 3 800ml cho trẻ từ 1-2 tuổi', 465000.00, 450000.00, N'Còn hàng', 0, 0),
-    (23, N'banh-bi-gerber-puffs-cac-vi-42g', N'Bánh bi Gerber Puffs các vị 42g', N'gerber_puffs.jpg', N'Bánh bi Gerber Puffs các vị 42g dành cho bé từ 8 tháng tuổi', 75000.00, NULL, N'Còn hàng', 0, 0),
+    (23, N'banh-bi-gerber-puffs-cac-vi-42g', N'Bánh bi Gerber Puffs các vị 42g', N'gerber_puffs.jpg', N'Bánh bi Gerber Puffs các vị 42g dành cho bé từ 8 tháng tuổi', 75000.00, 0, N'Còn hàng', 0, 0),
     (23, N'banh-an-dam-pigeon-vi-trai-cay-12m-14g', N'Bánh ăn dặm Pigeon vị trái cây 12M+ 14g', N'pigeon_fruit.jpg', N'Bánh ăn dặm Pigeon vị trái cây 12M+ 14g cho bé từ 12 tháng tuổi', 30000.00, 28000.00, N'Còn hàng', 0, 0),
     (24, N'bot-an-dam-ridielac-gold-gao-sua-4m-200g', N'Bột ăn dặm Ridielac Gold gạo sữa 4M+ 200g', N'ridielac_gold_rice_milk.jpg', N'Bột ăn dặm Ridielac Gold gạo sữa 4M+ 200g dành cho bé từ 4 tháng tuổi', 65000.00, 60000.00, N'Còn hàng', 0, 0),
-    (24, N'bot-an-dam-hipp-organic-rau-cu-250g', N'Bột ăn dặm HiPP Organic rau củ 250g', N'hipp_organic_vegetable.jpg', N'Bột ăn dặm HiPP Organic rau củ 250g cho bé từ 6 tháng tuổi', 145000.00, NULL, N'Còn hàng', 0, 0);
+    (24, N'bot-an-dam-hipp-organic-rau-cu-250g', N'Bột ăn dặm HiPP Organic rau củ 250g', N'hipp_organic_vegetable.jpg', N'Bột ăn dặm HiPP Organic rau củ 250g cho bé từ 6 tháng tuổi', 145000.00, 0, N'Còn hàng', 0, 0);
 
 -- Tạo bảnh Inventory
 CREATE TABLE inventory (
@@ -313,9 +313,7 @@ INSERT INTO review ([user_id], product_id, rate, comment)
 VALUES
 (1, 1, 4, N'Sản phẩm tốt, chất lượng đáng tin cậy.'),
 (2, 1, 5, N'Rất hài lòng với sản phẩm này.'),
-(3, 2, 3, N'Sản phẩm khá ổn, nhưng giá hơi cao.'),
-(4, 2, 4, N'Sản phẩm đáp ứng tốt nhu cầu của tôi.'),
-(5, 1, 5, N'Sản phẩm tuyệt vời, đáng đồng tiền bát gạo.');
+(3, 2, 3, N'Sản phẩm khá ổn, nhưng giá hơi cao.');
 
 -- Thêm dữ liệu vào bảng voucher
 INSERT INTO voucher (voucher_code, discount_type, discount_value, [name], cost, quantity, minimum_apply, max_discount, is_active, is_public)
@@ -329,29 +327,24 @@ INSERT INTO [order] ([user_id], voucher_id, [status], delivery_fee, total_amount
 VALUES
 (1, 1, N'Processing', 20000.00, 500000.00, 0.00, N'Online', N'Unpaid', N'Giao hàng trong giờ hành chính'),
 (2, NULL, N'Completed', 15000.00, 750000.00, 750000.00, N'COD', N'Paid', NULL),
-(3, 2, N'Shipping', 0.00, 1200000.00, 1200000.00, N'Online', N'Paid', N'Giao hàng nhanh'),
-(4, NULL, N'Pending', 25000.00, 400000.00, 0.00, N'COD', N'Unpaid', NULL),
-(5, 3, N'Processing', 20000.00, 600000.00, 600000.00, N'Online', N'Paid', N'Giao hàng cuối tuần');
+(3, 2, N'Shipping', 0.00, 1200000.00, 1200000.00, N'Online', N'Paid', N'Giao hàng nhanh');
 
 -- Thêm dữ liệu vào bảng order_detail
 INSERT INTO order_detail (order_id, product_id, inventory_id, quantity, price, sale_price)
 VALUES
-(1, 1, 1, 2, 32000.00, NULL),
-(1, 1, 2, 1, 32000.00, NULL),
+(1, 1, 1, 2, 32000.00, 0),
+(1, 1, 2, 1, 32000.00, 0),
 (2, 2, 4, 3, 135000.00, 130000.00),
 (2, 2, 5, 1, 135000.00, 130000.00),
-(3, 1, 3, 5, 32000.00, NULL),
-(3, 2, 4, 1, 135000.00, 130000.00),
-(4, 1, 1, 2, 32000.00, NULL),
-(5, 2, 5, 1, 135000.00, 130000.00),
-(5, 1, 2, 2, 32000.00, NULL);
+(3, 1, 3, 5, 32000.00, 0),
+(3, 2, 4, 1, 135000.00, 130000.00);
+
 
 -- Thêm dữ liệu vào bảng payment
 INSERT INTO payment (order_id, amount, payment_type, payment_method, payment_status, transaction_reference)
 VALUES
 (1, 500000.00, N'Online', N'Credit Card', N'Pending', N'TRX001'),
 (2, 750000.00, N'COD', N'Cash', N'Completed', NULL),
-(3, 1200000.00, N'Online', N'Bank Transfer', N'Completed', N'TRX002'),
-(4, 400000.00, N'COD', N'Cash', N'Pending', NULL),
-(5, 600000.00, N'Online', N'E-Wallet', N'Completed', N'TRX003');
+(3, 1200000.00, N'Online', N'Bank Transfer', N'Completed', N'TRX002');
+
 
