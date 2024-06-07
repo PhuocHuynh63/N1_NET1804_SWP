@@ -14,7 +14,8 @@ public enum ErrorCode {
     CATEGORY_NO_EXIST(1007, "Category no exist"),
     PRODUCT_SKU_NO_EXIST(1008, "Product sku does not exist"),
     PRODUCT_ATTRIBUTE_NO_EXIST(1009, "Product attribute does not exist"),
-    PRODUCT_ATTRIBUTE_EXIST(1009, "Product attribute exist"),
+    PRODUCT_ATTRIBUTE_EXIST(1010, "Product attribute exist"),
+    ORDER_NO_EXIST(1011, "Order does not exist"),
     UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception"),
     ;
 

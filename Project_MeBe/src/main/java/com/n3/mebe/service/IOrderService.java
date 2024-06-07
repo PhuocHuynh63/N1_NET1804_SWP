@@ -11,7 +11,7 @@ public interface IOrderService {
     List<OrderResponse> getOrdersList();
 
     Order createOrder(OrderRequest orderRequest);
-    Order updateOrder(OrderRequest orderRequest);
+    Order updateOrder(int orId, OrderRequest orderRequest);
 
     void deleteOrder(String orderId);
 }

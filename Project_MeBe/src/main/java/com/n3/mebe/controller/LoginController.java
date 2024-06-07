@@ -38,21 +38,6 @@ public class LoginController {
 
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
-//
-//    @PostMapping("/signup")
-//    public ResponseEntity<?> signup(@RequestBody SignUpRequest signUpRequest) {
-//        ResponseData responseData = new ResponseData();
-//
-//        responseData.setData(loginServiceImp.addUser(signUpRequest));
-//
-//        return new ResponseEntity<>(responseData, HttpStatus.OK);
-//    }
 
-    @GetMapping("/getAllUser")
-    public ResponseEntity<?> getALlUser() {
-        ResponseData responseData = new ResponseData();
-        responseData.setData(loginServiceImp.getAllUser());
 
-        return new ResponseEntity<>(responseData, HttpStatus.OK);
-    }
 }
