@@ -29,12 +29,31 @@ public class InventoryService implements IInventoryService {
     private ProductAttributeService productAttributeService;
 
 
+
+    // <editor-fold default state="collapsed" desc="get Inventory By Id">
+    public Inventory getInventoryById(int inventoryId) throws AppException {
+        return inventoryRepository.findById(inventoryId)
+                .orElseThrow(()-> new AppException(ErrorCode.INVENTORY_NO_EXIST));
+    }// </editor-fold>
+
+    // <editor-fold default state="collapsed" desc="Update Quantity Inventory By Id">
+    public void updateQuantity(int quanti, int inventoryId) throws AppException {
+        Inventory inventory = getInventoryById(inventoryId);
+        int updateQuanti = inventory.getQuantity() - quanti;
+
+        if (updateQuanti < 0) {
+            throw new AppException(ErrorCode.INVENTORY_QUANTITY_END);
+        }
+        inventory.setQuantity(updateQuanti);
+        inventoryRepository.save(inventory);
+    }// </editor-fold>
+
     /**
      *  Request from Client
      *
      */
 
-    // <editor-fold default state="collapsed" desc="Create Product Sku">
+    // <editor-fold default state="collapsed" desc="Create Inventory">
     @Override
     public Inventory createInventory(int prId, InventoryRequest inventoryRequest) {
 
@@ -56,7 +75,7 @@ public class InventoryService implements IInventoryService {
         return inventoryRepository.save(inventory);
     }// </editor-fold>
 
-    // <editor-fold default state="collapsed" desc="Update Product Sku">
+    // <editor-fold default state="collapsed" desc="Update Inventory">
     @Override
     public Inventory updateInventory(int prIdSku, InventoryRequest inventoryRequest) {
 
@@ -76,7 +95,7 @@ public class InventoryService implements IInventoryService {
         return inventoryRepository.save(inventory);
     }// </editor-fold>
 
-    // <editor-fold default state="collapsed" desc="Delete Product Sku">
+    // <editor-fold default state="collapsed" desc="Delete Inventory">
     @Override
     public void deleteInventory(int id) {
         inventoryRepository.deleteById(id);
@@ -87,7 +106,7 @@ public class InventoryService implements IInventoryService {
      *
      */
 
-    // <editor-fold default state="collapsed" desc="Get All Product Sku">
+    // <editor-fold default state="collapsed" desc="Get All Inventory">
     @Override
     public List<InventoryResponse> getAllInventory() {
         List<Inventory> list = inventoryRepository.findAll();
