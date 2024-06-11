@@ -1,0 +1,125 @@
+/* Cài đặt cơ bản cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    max-width: 1000px; /* Đặt kích thước tối đa cho body */
+    margin: 0 auto; /* Căn giữa body */
+}
+
+/* Định nghĩa thanh bên trái */
+.small-sidebar {
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    padding: 10px; /* Giảm padding để thanh bên nhỏ gọn hơn */
+    width: 200px; /* Đặt kích thước cho thanh bên nhỏ hơn */
+    float: left; /* Cho phép thanh bên cuộn cùng với nội dung */
+}
+
+/* Định nghĩa các liên kết trong thanh bên */
+.small-link {
+    display: block;
+    padding: 8px 0; /* Giảm padding để các liên kết nhỏ gọn hơn */
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px; /* Giảm margin để các liên kết nhỏ gọn hơn */
+}
+
+/* Hiệu ứng hover và active cho các liên kết */
+.small-link:hover, .small-link.active {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+/* Phần thông tin tổng quan của người dùng trong thanh bên */
+.small-profile-overview {
+    margin-bottom: 10px; /* Giảm margin để nhỏ gọn hơn */
+}
+
+.small-profile-img {
+    width: 80px; /* Giảm kích thước ảnh để nhỏ gọn hơn */
+    height: 80px; /* Giảm kích thước ảnh để nhỏ gọn hơn */
+    object-fit: cover;
+    margin-bottom: 5px; /* Giảm margin để nhỏ gọn hơn */
+}
+
+.small-profile-name {
+    margin: 0;
+    font-weight: bold;
+}
+
+.small-edit-profile {
+    display: block;
+    font-size: 0.8em; /* Giảm kích thước font */
+    color: #007bff;
+    text-decoration: none;
+}
+
+.small-edit-profile:hover {
+    text-decoration: underline;
+}
+
+/* Phần nội dung chính của trang */
+.small-main-content {
+    margin-left: 220px; /* Khoảng cách bên trái để nhường chỗ cho thanh bên */
+    padding: 20px;
+}
+
+.small-header {
+    font-size: 1.5em; /* Giảm kích thước font */
+}
+
+.small-subheader {
+    font-size: 1em; /* Giảm kích thước font */
+}
+
+.small-form-group {
+    margin-bottom: 10px; /* Giảm margin để form nhỏ gọn hơn */
+}
+
+.small-label {
+    font-size: 0.9em; /* Giảm kích thước font */
+    font-weight: bold;
+}
+
+/* Định nghĩa chung cho các input và select trong form */
+.small-input {
+    width: 100%;
+    padding: 5px; /* Giảm padding để các input nhỏ gọn hơn */
+    font-size: 0.9em; /* Giảm kích thước font để các input nhỏ gọn hơn */
+}
+
+.small-edit-link {
+    display: block;
+    font-size: 0.8em; /* Giảm kích thước font */
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.small-edit-link:hover {
+    text-decoration: underline;
+}
+
+.small-radio-label {
+    font-size: 0.9em; /* Giảm kích thước font */
+    margin-right: 10px; /* Thêm khoảng cách giữa các lựa chọn */
+}
+
+/* Định nghĩa chung cho các nút trong form */
+.small-btn {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 8px 15px; /* Giảm padding để nút nhỏ gọn hơn */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em; /* Giảm kích thước font để nút nhỏ gọn hơn */
+}
+
+.small-btn:hover {
+    background-color: #ff5714;
+}

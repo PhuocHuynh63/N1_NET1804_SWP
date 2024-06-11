@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Cá Nhân</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/profileDetail.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/include.js" defer></script>
+</head>
+<body>
+    <div w3-include-html="header.html"></div>
+
+    <section class="profile-details container py-5 mt-5 small-profile">
+        <div class="row">
+            <div class="col-md-3 ">
+                <div class="sidebar small-sidebar">
+                    <div class="profile-overview text-center mb-4 small-profile-overview">
+                        <img src="https://via.placeholder.com/80" alt="Profile Picture" class="rounded-circle small-profile-img">
+                        <p class="mt-2 small-profile-name">thuanvt212003</p>
+                        <a href="#" class="edit-profile small-edit-profile">Sửa Hồ Sơ</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <a href="#" class="main-menu small-link">Tài Khoản Của Tôi</a>
+                        <div class="submenu small-submenu" style="display: none;">
+                            <a href="#" class="small-link">Hồ Sơ</a>
+                            <a href="#" class="small-link">Ngân Hàng</a>
+                            <a href="#" class="small-link">Địa Chỉ</a>
+                            <a href="#" class="small-link">Đổi Mật Khẩu</a>
+                            <a href="#" class="small-link">Cài Đặt Thông Báo</a>
+                            <a href="#" class="small-link">Những Thiết Lập Riêng Tư</a>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h1 class="small-header">Hồ Sơ Của Tôi</h1>
+                <p class="small-subheader">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                <form class="profile-form small-profile-form">
+                    <div class="form-group small-form-group">
+                        <label for="username" class="small-label">Tên đăng nhập</label>
+                        <input type="text" id="username" class="form-control small-input" value="thuanvt212003" readonly>
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label for="name" class="small-label">Tên</label>
+                        <input type="text" id="name" class="form-control small-input" value="Hứa Đình Thuận">
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label for="email" class="small-label">Email</label>
+                        <input type="email" id="email" class="form-control small-input" value="example@example.com">
+                        <a href="#" class="edit-email small-edit-link">Thêm</a>
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label for="phone" class="small-label">Số điện thoại</label>
+                        <input type="text" id="phone" class="form-control small-input" value="0123456789" readonly>
+                        <a href="#" class="edit-phone small-edit-link">Thay Đổi</a>
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label class="small-label">Giới tính</label>
+                        <div>
+                            <input type="radio" id="male" name="gender" value="male" checked>
+                            <label for="male" class="small-radio-label">Nam</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female" class="small-radio-label">Nữ</label>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other" class="small-radio-label">Khác</label>
+                        </div>
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label for="birthdate" class="small-label">Ngày sinh</label>
+                        <div class="d-flex">
+                            <select id="day" class="form-control small-input">
+                                <option value="21" selected>21</option>
+                            </select>
+                            <select id="month" class="form-control mx-2 small-input">
+                                <option value="2" selected>Tháng 2</option>
+                            </select>
+                            <select id="year" class="form-control small-input">
+                                <option value="2003" selected>2003</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary small-btn">Lưu</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div w3-include-html="footer.html"></div>
+
+    <script src="js/profileUser.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".main-menu").addEventListener("click", function () {
+          var submenu = document.querySelector(".submenu");
+          submenu.style.display = submenu.style.display === "none" ? "block" : "none";
+        });
+      });
+    </script>
+</body>
+</html>

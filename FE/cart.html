@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <div id="overlay" class="overlay"></div>
+    <div class="cart-container">
+        <div class="cart-header">
+            <h2>Giỏ Hàng Của Bạn</h2>
+            <button class="close-btn" onclick="toggleCart()">X</button>
+        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <img src="https://via.placeholder.com/50" alt="Product Image">
+                            <div>
+                                <p>Gạc Răng Miệng Chippi Baby</p>
+                                <p>Default Title</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="price">110000</td>
+                    <td>
+                        <div class="quantity-control">
+                            <button class="minus-btn">-</button>
+                            <input type="text" class="quantity" value="2">
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </td>
+                    <td class="subtotal">220000</td>
+                    <td><button class="remove-btn">×</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <img src="https://via.placeholder.com/50" alt="Product Image">
+                            <div>
+                                <p>Bộ quần áo dài tay Nous petit (trắng/hồng)</p>
+                                <p>0-3M - Trắng</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="price">195000</td>
+                    <td>
+                        <div class="quantity-control">
+                            <button class="minus-btn">-</button>
+                            <input type="text" class="quantity" value="4">
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </td>
+                    <td class="subtotal">780000</td>
+                    <td><button class="remove-btn">×</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <img src="https://via.placeholder.com/50" alt="Product Image">
+                            <div>
+                                <p>Bánh AD Little Spoon vị cam quýt 30g</p>
+                                <p>Default Title</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="price">75000</td>
+                    <td>
+                        <div class="quantity-control">
+                            <button class="minus-btn">-</button>
+                            <input type="text" class="quantity" value="1">
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </td>
+                    <td class="subtotal">75000</td>
+                    <td><button class="remove-btn">×</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <p>Số lượng: <span id="total-quantity">7</span> sản phẩm</p>
+            <p>Tổng cộng: <span id="total-price">1075000₫</span></p>
+        </div>
+        <div class="cart-actions">
+            <button class="view-cart-btn">Xem giỏ hàng</button>
+            <button class="checkout-btn">Thanh toán</button>
+        </div>
+    </div>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header .navbar-brand img {
+    height: 50px;
+}
+
+header .navbar-nav .nav-link {
+    color: #333;
+}
+
+header .icons img {
+    height: 30px;
+    margin-left: 20px;
+}
+
+.carousel-item img {
+    height: 600px;
+    object-fit: cover;
+}
+
+.carousel-caption h1 {
+    font-size: 3em;
+}
+
+.carousel-caption p {
+    font-size: 1.5em;
+}
+
+.featured-products .product-item,
+.collections .collection-item,
+.blog .blog-post {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+/* CSS cho navbar khi cuộn trang */
+.navbar.scrolled {
+    background-color: #fff;
+    transition: background-color 200ms linear;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    /* Adjust the width of the buttons */
+    height: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    /* Adjust the size of the icons */
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Add a semi-transparent background */
+    border-radius: 50%;
+    /* Make the icons circular */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Darken the background on hover */
+}
+
+.carousel-control-prev-icon:after,
+.carousel-control-next-icon:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    /* Ensure the icon fits within the button */
+    display: block;
+}
+
+.carousel-control-prev-icon:after {
+    background-image: url('path/to/your/left-arrow-icon.png');
+    /* Add your custom left arrow icon */
+}
+
+.carousel-control-next-icon:after {
+    background-image: url('path/to/your/right-arrow-icon.png');
+    /* Add your custom right arrow icon */
+}
+
+.carousel-item .product-item img {
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.carousel-inner .row {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-item {
+    transition: transform 0.5s ease;
+}
+
+.featured-products .product-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.featured-products .product-item:hover {
+    transform: scale(1.05);
+}

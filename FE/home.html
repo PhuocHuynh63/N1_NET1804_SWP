@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nous - Thời trang trẻ em</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -81,43 +81,72 @@
         </a>
     </div>
 
-    <!-- Featured Products -->
+   
+    <!-- Featured Products Carousel -->
     <section class="featured-products container text-center py-5">
         <h2>Sản phẩm nổi bật</h2>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="product-item">
-                    <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
-                    <h3>Sản phẩm 1</h3>
-                    <p>Giá: 500,000 VND</p>
-                    <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+        <div id="featuredProductsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
+                                <h3>Sản phẩm 1</h3>
+                                <p>Giá: 500,000 VND</p>
+                                <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
+                                <h3>Sản phẩm 1</h3>
+                                <p>Giá: 500,000 VND</p>
+                                <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
+                                <h3>Sản phẩm 1</h3>
+                                <p>Giá: 500,000 VND</p>
+                                <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
+                                <h3>Sản phẩm 1</h3>
+                                <p>Giá: 500,000 VND</p>
+                                <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+                            </div>
+                        </div>
+                        <!-- Add more product items here as needed -->
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product-item">
-                    <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
-                    <h3>Sản phẩm 1</h3>
-                    <p>Giá: 500,000 VND</p>
-                    <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <img src="images/ao.pnj.webp" alt="Sản phẩm 2" class="img-fluid">
+                                <h3>Sản phẩm 2</h3>
+                                <p>Giá: 600,000 VND</p>
+                                <a href="#" class="btn btn-outline-dark">Chi tiết</a>
+                            </div>
+                        </div>
+                        <!-- Add more product items here as needed -->
+</div>
                 </div>
+                <!-- Add more carousel items here if needed -->
             </div>
-            <div class="col-md-3">
-                <div class="product-item">
-                    <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
-                    <h3>Sản phẩm 1</h3>
-                    <p>Giá: 500,000 VND</p>
-                    <a href="#" class="btn btn-outline-dark">Chi tiết</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product-item">
-                    <img src="images/ao.pnj.webp" alt="Sản phẩm 1" class="img-fluid">
-                    <h3>Sản phẩm 1</h3>
-                    <p>Giá: 500,000 VND</p>
-                    <a href="#" class="btn btn-outline-dark">Chi tiết</a>
-                </div>
-            </div>
-            <!-- Các sản phẩm khác tương tự -->
+            <a class="carousel-control-prev" href="#featuredProductsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#featuredProductsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </section>
 
@@ -179,5 +208,9 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
