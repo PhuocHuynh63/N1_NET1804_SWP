@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+.category-main {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 125px;/* Thêm khoảng cách giữa thanh Header và phần content */
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif; /* Thay đổi font chữ */
+}
+
+.subcategory-selector {
+    margin-bottom: 40px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subcategory-selector h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif; /* Thay đổi font chữ */
+}
+
+.subcategory-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.subcategory-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border: none; /* Bỏ khung viền */
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    background-color: transparent; /* Bỏ nền */
+    box-shadow: none; /* Bỏ hiệu ứng bóng */
+}
+
+.subcategory-item:hover {
+    background-color: transparent; /* Giữ nền màu trắng khi hover */
+}
+
+.subcategory-item img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px auto; /* Đặt margin auto để căn giữa */
+    display: block; /* Đảm bảo hình ảnh là phần tử block để áp dụng margin auto */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.subcategory-item img:hover {
+    transform: scale(1.1); /* Tăng kích thước khi hover */
+}
+
+.subcategory-item p {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif; /* Thay đổi font chữ */
+    color: #333;
+    transition: color 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.subcategory-item a {
+    text-decoration: none; /* Bỏ gạch dưới cho thẻ a */
+    color: inherit; /* Kế thừa màu từ thẻ cha */
+}
+
+.subcategory-item p:hover {
+    color: #ff6f61; /* Đổi màu chữ khi hover */
+}
+
+.product-section {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.product-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: 'Josefin Sans', sans-serif; /* Thay đổi font chữ */
+}
+
+.product-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.product-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden; /* Ẩn các phần tử nằm ngoài khung nhìn */
+    width: calc(100% - 80px); /* Trừ đi chiều rộng của 2 nút chuyển tiếp */
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    background-color: transparent; /* Bỏ nền */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.product-item:hover img {
+    transform: scale(1.05); /* Tăng kích thước khi hover */
+}
+
+.product-item img {
+    width: 100px; /* Điều chỉnh kích thước hình ảnh theo nhu cầu */
+    height: 100px; /* Thiết lập chiều cao cố định cho hình ảnh */
+    object-fit: contain; /* Đảm bảo hình ảnh giữ nguyên tỉ lệ */
+    margin-bottom: 10px;
+}
+
+
+.product-item .product-info {
+    padding: 0;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif; /* Thay đổi font chữ */
+    margin-bottom: 5px;
+}
+
+.product-price {
+    color: #ff6f61;
+    font-size: 14px;
+    font-family: 'Josefin Sans', sans-serif; /* Thay đổi font chữ */
+}
+
+.nav-button:hover {
+    color: #ff6f61;
+}
+
+.nav-button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+    position: absolute;
+}
+
+.nav-button.left {
+    left: 100px; /* Điều chỉnh vị trí nút trái */
+}
+
+.nav-button.right {
+    right: 100px; /* Điều chỉnh vị trí nút phải */
+}
