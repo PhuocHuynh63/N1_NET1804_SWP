@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Header.css";
-import LoginPage from "../../pages/loginPage/LoginPage";
 
 export default function Header() {
     const [show, setShow] = useState(false);
@@ -11,20 +10,17 @@ export default function Header() {
     return (
         <div className="header_container">
             <header>
-                <a className="navbar_brand" href="/"><img src="/images/Logo_Header_RemoveBackground.png" alt="Nous Logo" height="50" /></a>
+                <a className="navbar_brand" href="/"><img src="/images/Logo_Header.png" alt="Nous Logo" height="50" /></a>
 
                 <form className="form_inline">
                     <input className="form_control" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search" />
-                    <i id="search" className="fa-solid fa-magnifying-glass"></i>
+                    <img id="search" src="/images/logo/magnifying-glass-solid.svg" alt="Tìm kiếm" height="17" />
                 </form>
 
                 <div className="icons">
-                    <span className="icons-header" onClick={handleShow}>
-                        <i className="fa-regular fa-user"></i>
-                    </span>
-                    <a className="icons-header" href="/cart">
-                        <i className="fa-solid fa-cart-shopping"></i>
-                    </a>
+                    <span className="icons-header" onClick={handleShow}><img src="/images/logo/user-solid.svg" alt="Tài khoản" height="30" /></span>
+                    <a className="icons-header" href="/wishlist"><img src="/images/logo/heart-solid.svg" alt="Yêu thích" height="30" /></a>
+                    <a className="icons-header" href="/cart"><img src="/images/logo/cart-shopping-solid.svg" alt="Giỏ hàng" height="30" /></a>
                 </div>
             </header>
 
@@ -38,23 +34,23 @@ export default function Header() {
                             <a className="nav-link" href="/about">Giới Thiệu MeBe</a>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a className="nav-link dropdown-toggle" href="/category/Sữa & Bình Sữa" id="navbarDropdown1" role="button" aria-haspopup="true" aria-expanded="false">
                                 Sữa & Bình Sữa
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                <a className="dropdown-item_title" href="/newborn-0-3">Sữa</a>
-                                <a className="dropdown-item" href="/newborn-0-3">Sữa bột</a>
-                                <a className="dropdown-item" href="/baby-3-24">Sữa pha sẵn</a>
+                                <a className="dropdown-item_title" href="/sua">Sữa</a>
+                                <a className="dropdown-item" href="/suabot">Sữa bột</a>
+                                <a className="dropdown-item" href="/suaphasan">Sữa pha sẵn</a>
                                 <div className="dropdown-divider"></div>
                                 <a className="dropdown-item_title" href="#">Bình sữa - Núm ti - Phụ kiện</a>
                                 <a className="dropdown-item" href="#">Bình sữa</a>
                                 <a className="dropdown-item" href="#">Phụ kiện bình sữa</a>
                                 <a className="dropdown-item" href="#">Núm ti</a>
-                                <a className="dropdown-item" href="#">Núm ti thay thế</a>
+                                <a className="dropdown-item" href="#">Khác</a>
                             </div>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a className="nav-link dropdown-toggle" href="/category/Đồ Cho Mẹ" id="navbarDropdown2" role="button" aria-haspopup="true" aria-expanded="false">
                                 Đồ Cho Mẹ
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -65,21 +61,22 @@ export default function Header() {
                             </div>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" aria-haspopup="true" aria-expanded="false">
-                                Thời Trang Bé Gái
+                            <a className="nav-link dropdown-toggle" href="/category/Thời Trang Cho Bé" id="navbarDropdown3" role="button" aria-haspopup="true" aria-expanded="false">
+                                Thời Trang Cho Bé
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                <a className="dropdown-item" href="/girls-0-3">Sơ sinh 0-3 tháng</a>
-                                <a className="dropdown-item" href="/girls-3-24">Bé 3-24 tháng</a>
+                                <a className="dropdown-item" href="/quanao">Quần áo</a>
+                                <a className="dropdown-item" href="/balotuixach">Balo - Túi xách</a>
+                                <a className="dropdown-item" href="/giaydep">Giày dép</a>
+                                <a className="dropdown-item" href="/giaydep">Đồ bơi</a>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">Something else here</a>
+                                <a className="dropdown-item" href="#">Khác</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <LoginPage show={show} handleClose={handleClose} />
         </div>
     );
 }

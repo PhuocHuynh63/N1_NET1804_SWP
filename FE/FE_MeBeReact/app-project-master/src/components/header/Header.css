@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 .header_container {
-    background-color: #fefefe;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
@@ -52,30 +52,24 @@ header {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    border: 1px solid #383636;
     border-radius: 10px;
     height: 34px;
     width: 450px;
+    padding-right: 7px;
 }
 
 .form_inline #search {
-    display: flex;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    border: 2px solid rgb(160, 150, 79);
     border: none;
-    border-radius: 0 10px 10px 0;
-    height: 32px;
-    padding: 0 10px;
+    border-left: 1px solid #272626;
+    padding-left: 7px;
+    width: 20px;
+    height: 78%;
     cursor: pointer;
 }
 
-.form_inline #search:hover {
-    color: rgba(0, 0, 0, 0.649);
-}
-
 .form_inline:focus-within {
-    border: none;
-    background-color: rgba(245, 244, 244, 0.771);
+    border: 2px solid #1b1a1a;
 }
 
 .form_control {
@@ -84,7 +78,7 @@ header {
     height: 30px;
     padding-left: 13px;
     font-size: 15px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
 }
 
 .form_control:hover {
@@ -94,7 +88,6 @@ header {
 .form_control:focus {
     border: none;
     outline: none;
-    background-color: rgba(245, 244, 244, 0.67);
 }
 
 .btn_outline_success:hover {
@@ -113,17 +106,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-}
-
-.icons-header {
-    font-size: 21px;
-    color: rgba(160, 150, 79, 0.57);
     cursor: pointer;
-}
-
-.icons-header:hover {
-    color: rgb(160, 140, 76);
 }
 
 .icons img {
@@ -192,7 +175,7 @@ header {
 
 .nav-link.dropdown-toggle {
     font-weight: 500;
-    margin-left: 16px;
+    margin-right: 10px;
 }
 
 .nav-link.dropdown-toggle:hover {
