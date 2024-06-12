@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./Header.css";
 import LoginPage from "../../pages/loginPage/LoginPage";
+import CartPage from "../../pages/cartPage/Cart";
 
 export default function Header() {
-    const [show, setShow] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showCart, setShowCart] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
+
+    const handleCloseCart = () => setShowCart(false);
+    const handleShowCart = () => setShowCart(true);
 
     return (
         <div className="header_container">
@@ -19,12 +24,13 @@ export default function Header() {
                 </form>
 
                 <div className="icons">
-                    <span className="icons-header" onClick={handleShow}>
+                    <span className="icons-header" onClick={handleShowLogin}>
                         <i className="fa-regular fa-user"></i>
                     </span>
-                    <a className="icons-header" href="/cart">
+
+                    <span className="icons-header" onClick={handleShowCart}>
                         <i className="fa-solid fa-cart-shopping"></i>
-                    </a>
+                    </span>
                 </div>
             </header>
 
@@ -79,7 +85,8 @@ export default function Header() {
                 </div>
             </nav>
 
-            <LoginPage show={show} handleClose={handleClose} />
+            <LoginPage show={showLogin} handleClose={handleCloseLogin} />
+            <CartPage show={showCart} handleClose={handleCloseCart} />
         </div>
     );
 }
