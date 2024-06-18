@@ -2,6 +2,7 @@ package com.n3.mebe.controller;
 
 import com.n3.mebe.dto.response.ResponseData;
 import com.n3.mebe.service.ILoginService;
+import com.n3.mebe.service.iml.LoginService;
 import com.n3.mebe.util.JwtUtilHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ public class LoginController {
 
     @Autowired
     ILoginService loginServiceImp;
+
 
     @Autowired
     JwtUtilHelper jwtUtilHelper;
@@ -33,6 +35,7 @@ public class LoginController {
             responseData.setData(token);
         } else {
             responseData.setData("");
+            responseData.setDescription("username or password incorrect");
             responseData.setSuccess(false);
         }
 

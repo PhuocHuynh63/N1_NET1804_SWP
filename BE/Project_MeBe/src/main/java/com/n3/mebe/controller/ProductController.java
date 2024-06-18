@@ -57,6 +57,7 @@ public class ProductController {
         return productService.updateProduct(id, productRequest);
     }
 
+
     //Delete product by id
     @DeleteMapping("/delete/product_id={id}")
     String deleteProduct(@PathVariable("id") int id) {

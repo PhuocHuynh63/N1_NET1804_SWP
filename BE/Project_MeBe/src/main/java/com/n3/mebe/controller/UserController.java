@@ -55,7 +55,7 @@ public class UserController {
     }
 
     //Response a user by id
-    @GetMapping("/userId={user_id}")
+    @GetMapping("/{user_id}")
     public UserResponse getUser(@PathVariable("user_id") int user_id) {
 
         return userService.getUserByIdResponse(user_id);

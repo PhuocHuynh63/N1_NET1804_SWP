@@ -17,3 +17,23 @@
     right: 10px;
     cursor: pointer;
 }
+
+.login-modal-content {
+    border-radius: 3px;
+}
+
+.btn.btn-dark.btn-lg {
+    background-color: black;
+}
+
+.btn.btn-dark.btn-lg:hover {
+    background-color: rgba(0, 0, 0, 0.77);
+}
+
+#username {
+    width: 100%;
+}
+
+#password {
+    width: 100%;
+}

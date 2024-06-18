@@ -1,11 +1,26 @@
-.body {
-    position: relative;
-    top: 80px;
-    font-family: Arial, sans-serif;
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+.productdetail-container {
+    width: 100%;
+    max-width: 1060px;
+    /* Adjust the max-width as needed */
+    margin: 0 auto;
+    /* Center the container */
+    font-family: "Roboto", sans-serif;
     padding: 0;
     color: #333;
+    /* Center text */
 }
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px !important;
+    padding-top: 30px !important;
+}
+
+/* Other existing styles... */
 
 .breadcrumb {
     background: none;
@@ -16,10 +31,38 @@
     content: ">";
 }
 
+
+a {
+    text-decoration: none;
+}
+
+/* Price */
 .product-details .price {
-    font-size: 1.5em;
-    color: #e74c3c;
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+.main-price {
+    font-size: 20px;
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.sale-price {
+    text-decoration: line-through;
+    color: #636161;
+    margin-right: 13px;
+}
+
+.sale-percent {
+    background: #d0c699;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 6px;
+    border-radius: 2px;
+    color: #ffffff;
+    margin-left: 10px;
 }
 
 .product-colors img {
@@ -48,37 +91,33 @@
     margin-bottom: 20px;
 }
 
-/* CSS cho navbar khi cuộn trang */
+/* CSS for navbar when scrolling */
 .navbar.scrolled {
     background-color: #fff;
     transition: background-color 200ms linear;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* CSS cho thanh tìm kiếm */
-form.form-inline {
-    flex-grow: 1;
-}
-
-/* CSS cho hiệu ứng sản phẩm */
+/* CSS for product effects */
 .product-details img {
     transition: transform 0.3s;
 }
 
 .product-details img:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 
 .btn-primary {
     transition: background-color 0.3s, transform 0.3s;
+    background-color: #528ed4a6;
+    border: none;
 }
 
 .btn-primary:hover {
-    background-color: #3498db;
-    transform: scale(1.05);
+    background-color: #528fd4;
 }
 
-/* CSS cho phần đánh giá */
+/* CSS for reviews */
 .rating-summary {
     font-size: 1.2em;
     display: flex;
@@ -93,7 +132,7 @@ form.form-inline {
 .rating-summary .rating-stars,
 .review-item .rating-stars {
     color: #f39c12;
-    /* Màu vàng cho các ngôi sao */
+    /* Yellow color for stars */
 }
 
 .review-item {
@@ -104,4 +143,34 @@ form.form-inline {
 .review-item strong {
     display: block;
     font-size: 1.1em;
+}
+
+.btn-review {
+    margin-top: 17px;
+    background-color: #6e97ff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    height: 37px;
+    width: 170px;
+}
+
+.btn-review:hover {
+    background-color: #6e97ffce;
+}
+
+.row .col-md-3.product {
+    width: 265px;
+    margin-top: 17px;
+}
+
+.row .col-md-3.product .card:hover {
+    transition: all 0.5s;
+    transform: scale(1.05);
+}
+
+.row .col-md-3.product .card img {
+    /* margin-top: 17px; */
+    height: 100%;
+    width: 100%;
 }

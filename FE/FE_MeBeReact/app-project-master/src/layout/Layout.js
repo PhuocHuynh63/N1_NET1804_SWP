@@ -7,11 +7,9 @@ export default function ({ Component }) {
     return (
         <div className='layout-container'>
             <Header />
-            <div className='layout-main'>
 
-                <div className='main-content'>
-                    <Component />
-                </div>
+            <div className='main-content'>
+                <Component />
             </div>
             <Footer />
         </div>

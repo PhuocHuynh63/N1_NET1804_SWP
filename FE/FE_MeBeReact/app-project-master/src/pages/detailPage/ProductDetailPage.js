@@ -1,15 +1,54 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { meBeSrc } from '../../service/meBeSrc';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ProductDetail.css";
 
 export default function DetailPage() {
 
+    const [product, setProduct] = useState({})
+    const [relatedProducts, setRelatedProducts] = useState([])
+
+    const discount = ((1 - (product.salePrice / product.price)) * 100).toFixed(2);
+    const { productId } = useParams();
+
+    // Get product detail by productId
+    useEffect(() => {
+        meBeSrc.getProductDetail(productId)
+            .then((res) => {
+                setProduct(res.data)
+                // console.log(res.data);
+            }).catch((err) => {
+                console.log(err);
+            });
+    }, [productId])
+
+    // useEffect(() => {
+    //     if (product.subCategory && product.subCategory.category) {
+    //         meBeSrc.getListCategory(product.subCategory.category)
+    //             .then((res) => {
+    //                 const filterProducts = res.data.filter((item) => item._id !== productId.slice(0, 4))
+    //                 setRelatedProducts(filterProducts)
+    //                 console.log(filterProducts);
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             })
+    //     }
+
+    // }, [product])
+
     return (
-        <div className='body'>
+        <div className='productdetail-container'>
             <section className="product-details container py-5 mt-5">
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li className="breadcrumb-item">
+                            <NavLink to="/">
+                                Trang chủ
+                            </NavLink>
+                        </li>
+
                         <li className="breadcrumb-item"><a href="#">Bodysuit cộc tay</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Set 2 bodysuit xanh phối be</li>
                     </ol>
@@ -20,7 +59,7 @@ export default function DetailPage() {
                         <div id="productCarousel" className="carousel slide" data-ride="carousel">
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img src="/images/ao.pnj.webp" className="d-block w-100" alt="Bodysuit Xanh" />
+                                    <img src={product.images} className="d-block w-100" alt="Bodysuit Xanh" />
                                 </div>
                                 <div className="carousel-item">
                                     <img src="/images/ao.pnj.webp" className="d-block w-100" alt="Bodysuit Be" />
@@ -37,21 +76,17 @@ export default function DetailPage() {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <h1>Set 2 bodysuit xanh phối be</h1>
-                        <p className="text-danger">Còn hàng</p>
+                        <h3>{product.name}</h3>
+                        <p className="text-danger">{product.status}</p>
                         <p><strong>Mã sản phẩm:</strong> NB2524-TB2-UO1-MG-OM</p>
-                        <p className="price">Giá: 255,000đ</p>
-                        <p><strong>Màu sắc:</strong></p>
-                        <div className="product-colors mb-3">
-                            <img src="images/image/Sua & binh/Sua/sua-bau/sua-Ensure-gold/sua-Ensure-gold-1.jpg" alt="Color 1" className="img-thumbnail" width="50" />
-                            <img src="images/image/Sua & binh/Sua/sua-bau/sua-Ensure-gold/sua-Ensure-gold-2.jpg" alt="Color 2" className="img-thumbnail" width="50" />
-                        </div>
-                        <p><strong>Kích thước:</strong></p>
-                        <div className="product-sizes mb-3">
-                            <button className="btn btn-outline-secondary">0-3M</button>
-                            <button className="btn btn-outline-secondary">3-6M</button>
-                            <button className="btn btn-outline-secondary">6-9M</button>
-                            <button className="btn btn-outline-secondary">9-12M</button>
+                        <div className='price'>
+                            {product.price && <span className="sale-price">{product.price.toLocaleString('vi-VN')}₫</span>}
+                            {product.salePrice && <span className="main-price">{product.salePrice.toLocaleString('vi-VN')}₫</span>}
+                            {product.price && product.salePrice && (
+                                <span className='sale-percent'>
+                                    Giảm {discount} %
+                                </span>
+                            )}
                         </div>
                         <div className="product-quantity mb-3">
                             <strong>Số lượng:</strong>
@@ -62,7 +97,7 @@ export default function DetailPage() {
                 </div>
                 <div className="product-description mt-5">
                     <h4>Mô tả</h4>
-                    <p>Thông tin kỹ thuật và mô tả chi tiết về sản phẩm.</p>
+                    <p>{product.description}</p>
                 </div>
 
                 {/* Đánh giá sản phẩm */}
@@ -100,7 +135,7 @@ export default function DetailPage() {
                                 <div className="rating-stars">★★★★★</div>
                                 <p>Nous Admin: Cảm ơn Anh/Chị đã tin tưởng và lựa chọn mua hàng tại Nous. Nous hy vọng anh/chị có trải nghiệm mua sắm thú vị và sự yêu mến, ủng hộ Nous trong thời gian tới ạ. Mọi ý kiến đóng góp của anh/chị Nous sẽ tiếp thu và hoàn thiện hơn trong tương lai. Chúc Em bé và gia đình mình luôn mạnh khỏe, hạnh phúc nhé ạ ❤️❤️❤️</p>
                             </div>
-                            <button className="btn btn-outline-secondary mt-3">Xem thêm đánh giá</button>
+                            <button className="btn-review">Xem thêm đánh giá</button>
                         </div>
                         <div className="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
                             <p>Hình ảnh đánh giá sản phẩm.</p>
@@ -108,21 +143,25 @@ export default function DetailPage() {
                     </div>
                 </div>
 
-                <div className="related-products mt-5">
+                {/* <div className="related-products mt-5">
                     <h4>Sản phẩm liên quan</h4>
                     <div className="row">
                         {/* Repeat similar product cards for each related product */}
-                        <div className="col-md-3">
-                            <div className="card">
-                                <img src="/images/ao.pnj.webp" className="card-img-top" alt="Related Product 1" />
-                                <div className="card-body">
-                                    <h5 className="card-title">Bodysuit 1</h5>
-                                    <p className="card-text">200,000đ</p>
+                {/* <div className="row">
+                            {relatedProducts.map((relatedProduct) => (
+                                <div className="col-md-3 product" key={relatedProduct.productId}>
+                                    <div className="card justify-content-center align-items-center">
+                                        <img src={relatedProduct.images} className="card-img-top" alt={relatedProduct.name} />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{relatedProduct.name}</h5>
+                                            <p className="card-text">{relatedProduct.price.toLocaleString('vi-VN')}₫</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                         </div>
-                        <div className="col-md-3">
-                            <div className="card">
+                        <div className="col-md-3 product">
+                            <div className="card justify-content-center align-items-center">
                                 <img src="/images/ao.pnj.webp" className="card-img-top" alt="Related Product 2" />
                                 <div className="card-body">
                                     <h5 className="card-title">Bodysuit 2</h5>
@@ -130,8 +169,8 @@ export default function DetailPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
-                            <div className="card">
+                        <div className="col-md-3 product">
+                            <div className="card justify-content-center align-items-center">
                                 <img src="/images/ao.pnj.webp" className="card-img-top" alt="Related Product 3" />
                                 <div className="card-body">
                                     <h5 className="card-title">Bodysuit 3</h5>
@@ -139,8 +178,8 @@ export default function DetailPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
-                            <div className="card">
+                        <div className="col-md-3 product">
+                            <div className="card justify-content-center align-items-center">
                                 <img src="/images/ao.pnj.webp" className="card-img-top" alt="Related Product 4" />
                                 <div className="card-body">
                                     <h5 className="card-title">Bodysuit 4</h5>
@@ -149,12 +188,12 @@ export default function DetailPage() {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="viewed-products mt-5">
+                </div> */}
+                {/* <div className="viewed-products mt-5">
                     <h4>Sản phẩm đã xem</h4>
                     <div className="row">
                         {/* Repeat similar product cards for each viewed product */}
-                        <div className="col-md-3">
+                {/* <div className="col-md-3 product">
                             <div className="card">
                                 <img src="/images/ao.pnj.webp" className="card-img-top" alt="Viewed Product 1" />
                                 <div className="card-body">
@@ -162,11 +201,11 @@ export default function DetailPage() {
                                     <p className="card-text">255,000đ</p>
                                 </div>
                             </div>
-                        </div>
-                        {/* Thêm các sản phẩm đã xem khác tương tự */}
-                    </div>
-                </div>
-            </section>
-        </div>
+                        </div> */}
+                {/* Thêm các sản phẩm đã xem khác tương tự */}
+                {/* </div>
+                </div > */}
+            </section >
+        </div >
     )
 }
