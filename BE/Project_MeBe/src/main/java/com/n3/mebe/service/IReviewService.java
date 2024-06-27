@@ -8,10 +8,17 @@ import java.util.List;
 
 public interface IReviewService {
 
-    List<ReviewResponse> getReviewAll();
+
     Review getReview(int id);
+
     ReviewResponse getReviewResponse(int id);
+
+    List<ReviewResponse> getReviewResponseByUserId(int userId);
+
+    List<ReviewResponse> getReviewResponseByProductId(int prId);
+
     Review addReview(ReviewRequest review);
+
     Review updateReview(int id, ReviewRequest review);
 
     void deleteReview(int id);

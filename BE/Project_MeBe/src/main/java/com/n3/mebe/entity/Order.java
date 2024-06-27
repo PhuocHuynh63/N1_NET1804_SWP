@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,14 +32,8 @@ public class Order {
     @Column(name = "[status]")
     private String status;
 
-    @Column(name = "delivery_fee")
-    private float deliveryFee;
-
     @Column(name = "total_amount")
     private float totalAmount;
-
-    @Column(name = "deposite_amount")
-    private float depositeAmount;
 
     @Column(name = "order_type")
     private String orderType;
@@ -55,5 +50,5 @@ public class Order {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "order")
-    private Set<OrderDetail> orderDetails;
+    private List<OrderDetail> orderDetails;
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/review")
 public class ReviewController {
@@ -17,29 +18,34 @@ public class ReviewController {
     @Autowired
     private IReviewService reviewService;
 
-    @GetMapping("/list")
-    public List<ReviewResponse> listReview() {
-        return reviewService.getReviewAll();
-    }
-
-    @GetMapping("/list{id}")
-    public ReviewResponse listReviewById(@PathVariable("id") int id) {
-        return reviewService.getReviewResponse(id);
-    }
 
     @PostMapping("/create")
-    public Review create(ReviewRequest request) {
+    Review create(@RequestBody ReviewRequest request) {
         return reviewService.addReview(request);
     }
 
     @PutMapping("/update/reviewId={id}")
-    public Review update(@PathVariable("id") int id, ReviewRequest request) {
+    Review update(@PathVariable("id") int id, @RequestBody ReviewRequest request) {
         return reviewService.updateReview(id, request);
     }
 
     @DeleteMapping("/delete/reviewId={id}")
-    public String delete(@PathVariable("id") int id) {
+    String delete(@PathVariable("id") int id) {
         reviewService.deleteReview(id);
         return "Deleted";
     }
+
+    @GetMapping("/userId={id}")
+    List<ReviewResponse> getReviewByUserId(@PathVariable("id") int id) {
+        return reviewService.getReviewResponseByUserId(id);
+    }
+
+    @GetMapping("/productId={id}")
+    List<ReviewResponse> getReviewByProductId(@PathVariable("id") int id) {
+        return reviewService.getReviewResponseByProductId(id);
+    }
+
+
+
+
 }

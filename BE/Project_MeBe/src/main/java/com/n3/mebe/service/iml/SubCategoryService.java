@@ -23,35 +23,6 @@ public class SubCategoryService implements ISubCategoryService {
     @Autowired
     private ICategoryRepository icategoryRepository;
 
-    /**
-     *  Request from Client
-     *
-     */
-
-    // <editor-fold default state="collapsed" desc="Create SubCategory">
-    @Override
-    public SubCategory createSubCategory(SubCategoryRequest request) {
-        Category category = icategoryRepository.findByName(request.getCategoryParentName());
-        SubCategory subCategory = new SubCategory();
-
-        subCategory.setCategory(category);
-        subCategory.setName(request.getName());
-        subCategory.setImage(request.getImage());
-        return subCategoryRepository.save(subCategory);
-    }// </editor-fold>
-
-
-    // <editor-fold default state="collapsed" desc="Create User">
-    @Override
-    public SubCategory updateSubCategory(SubCategoryRequest request) {
-        return null;
-    }// </editor-fold>
-
-    // <editor-fold default state="collapsed" desc="Create User">
-    @Override
-    public void deleteSubCategory(int subCategoryId) {
-
-    }// </editor-fold>
 
     /**
      *  Response to Client
@@ -67,16 +38,67 @@ public class SubCategoryService implements ISubCategoryService {
        for (SubCategory subCategory : subCategories) {
            SubCategoryResponse subCategoryResponse = new SubCategoryResponse();
 
+
+           subCategoryResponse.setSubCategoryId(subCategory.getSubCateId());
            //lấy ra category tên cha
            subCategoryResponse.setCategory_parent(subCategory.getCategory().getName());
-
+           subCategoryResponse.setSlug(subCategory.getSlug());
            subCategoryResponse.setName(subCategory.getName());
            subCategoryResponse.setImage(subCategory.getImage());
+           subCategoryResponse.setImage2(subCategory.getImage2());
            subCategoryResponses.add(subCategoryResponse);
        }
 
         return subCategoryResponses;
     }// </editor-fold>
 
+    // <editor-fold default state="collapsed" desc="Get SubCategories Response By cateParent Name">
+    @Override
+    public List<SubCategoryResponse> getSubCategoriesResponse(String categoryParentName) {
 
+        Category category = icategoryRepository.findByName(categoryParentName);
+
+        List<SubCategory> subCategories = subCategoryRepository.findByCategory(category);
+
+        List<SubCategoryResponse> subCategoryResponses = new ArrayList<>();
+
+        for (SubCategory subCategory : subCategories) {
+            SubCategoryResponse subCategoryResponse = new SubCategoryResponse();
+
+            //lấy ra category tên cha
+            subCategoryResponse.setCategory_parent(subCategory.getCategory().getName());
+
+            subCategoryResponse.setSlug(subCategory.getSlug());
+            subCategoryResponse.setName(subCategory.getName());
+            subCategoryResponse.setImage(subCategory.getImage());
+            subCategoryResponse.setImage2(subCategory.getImage2());
+            subCategoryResponses.add(subCategoryResponse);
+        }
+
+        return subCategoryResponses;
+    }// </editor-fold>
+
+    // <editor-fold default state="collapsed" desc="Get SubCategories Response By Slug">
+        @Override
+        public List<SubCategoryResponse> getSubCategoriesBySlug(String slug) {
+        List<SubCategory> subCategories = subCategoryRepository.findBySlug(slug);
+
+        List<SubCategoryResponse> subCategoryResponses = new ArrayList<>();
+
+        for (SubCategory subCategory : subCategories) {
+            SubCategoryResponse subCategoryResponse = new SubCategoryResponse();
+
+            subCategoryResponse.setSubCategoryId(subCategory.getSubCateId());
+            //lấy ra category tên cha
+            subCategoryResponse.setCategory_parent(subCategory.getCategory().getName());
+
+            subCategoryResponse.setSlug(subCategory.getSlug());
+            subCategoryResponse.setName(subCategory.getName());
+            subCategoryResponse.setImage(subCategory.getImage());
+            subCategoryResponse.setImage2(subCategory.getImage2());
+            subCategoryResponses.add(subCategoryResponse);
+        }
+
+        return subCategoryResponses;
+        }// </editor-fold>
 }

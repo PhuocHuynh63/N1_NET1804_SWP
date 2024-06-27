@@ -10,10 +10,7 @@ public interface ISubCategoryService {
 
     List<SubCategoryResponse> getSubCategoriesResponse();
 
-    SubCategory createSubCategory(SubCategoryRequest request);
+    List<SubCategoryResponse> getSubCategoriesResponse(String categoryParentName);
 
-    SubCategory updateSubCategory(SubCategoryRequest request);
-
-    void deleteSubCategory(int subCategoryId);
-
+    List<SubCategoryResponse> getSubCategoriesBySlug(String slug);
 }

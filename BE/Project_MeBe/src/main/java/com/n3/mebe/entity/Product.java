@@ -45,6 +45,9 @@ public class Product {
     @Column(name = "total_sold")
     private int totalSold;
 
+    @Column(name = "quantity")
+    private int quantity;
+
     @Column(name = "product_view")
     private int productView;
 
@@ -55,11 +58,6 @@ public class Product {
     private Date updateAt;
 
     @OneToMany(mappedBy = "product")
-    private Set<Inventory> inventories;
-
-    @OneToMany(mappedBy = "product")
     private Set<Review> reviewsProducts;
 
-    @OneToMany(mappedBy = "product")
-    private Set<OrderDetail> orderDetails;
 }

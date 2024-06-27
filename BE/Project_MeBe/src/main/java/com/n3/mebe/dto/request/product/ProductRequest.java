@@ -8,11 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ProductRequest {
-    private MultipartFile file;
-    private SubCategory subCategory;
+
+    private int subCategoryId;
     private String slug;
     private String name;
     private String description;
@@ -20,6 +18,7 @@ public class ProductRequest {
     private float salePrice;
     private String status;
     private int totalSold;
+    private int quantity;
     private int productView;
 
 }

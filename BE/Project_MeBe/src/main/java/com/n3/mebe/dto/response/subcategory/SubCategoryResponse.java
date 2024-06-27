@@ -14,7 +14,10 @@ import java.util.Set;
 @NoArgsConstructor
 public class SubCategoryResponse {
 
+    private int subCategoryId;
     private String category_parent;
+    private String slug;
     private String name;
     private String image;
+    private String image2;
 }

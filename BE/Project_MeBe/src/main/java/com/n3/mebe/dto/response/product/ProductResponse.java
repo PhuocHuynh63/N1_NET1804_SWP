@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class ProductResponse {
 
+    private int productId;
     private SubCategory subCategory;
     private String slug;
     private String name;
@@ -22,6 +23,7 @@ public class ProductResponse {
     private float salePrice;
     private String status;
     private int totalSold;
+    private int quantity;
     private int productView;
     private Date createAt;
     private Date updateAt;

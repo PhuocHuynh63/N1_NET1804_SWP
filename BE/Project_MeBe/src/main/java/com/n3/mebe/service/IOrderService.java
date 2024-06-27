@@ -2,6 +2,7 @@ package com.n3.mebe.service;
 
 import com.n3.mebe.dto.request.order.CancelOrderRequest;
 import com.n3.mebe.dto.request.order.OrderRequest;
+import com.n3.mebe.dto.request.order.OrderStatusRequest;
 import com.n3.mebe.dto.response.order.OrderResponse;
 import com.n3.mebe.entity.Order;
 
@@ -11,12 +12,17 @@ public interface IOrderService {
 
     List<OrderResponse> getOrdersList();
 
-    Order createOrder(OrderRequest orderRequest);
+    boolean createOrder(OrderRequest orderRequest);
+
     Order updateOrder(int orId, OrderRequest orderRequest);
 
-    Order cancelOrder(int orderId , CancelOrderRequest cancelOrderRequest);
+    String cancelOrder(int orderId , CancelOrderRequest cancelOrderRequest);
+
+    Order getOrder(int orId);
 
     OrderResponse getOrderResponse(int orId);
 
     void deleteOrder(String orderId);
+
+    String setStatusOrder(OrderStatusRequest request);
 }

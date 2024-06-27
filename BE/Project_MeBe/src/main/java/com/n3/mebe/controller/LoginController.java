@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
@@ -20,8 +21,9 @@ public class LoginController {
     @Autowired
     JwtUtilHelper jwtUtilHelper;
 
-    @PostMapping("/signin")
-    public ResponseEntity<?> signin(@RequestParam String username, @RequestParam String password) {
+    @PostMapping()
+    ResponseEntity<?> signin(@RequestParam String username,
+                                    @RequestParam String password) {
         ResponseData responseData = new ResponseData();
 
         /* Lấy key
@@ -32,7 +34,9 @@ public class LoginController {
 
         if(loginServiceImp.checkLogin(username, password)) {
             String token = jwtUtilHelper.genarateToken(username);
+            String role = loginServiceImp.getUserRole(username);
             responseData.setData(token);
+            responseData.setRole(role);
         } else {
             responseData.setData("");
             responseData.setDescription("username or password incorrect");
@@ -41,6 +45,4 @@ public class LoginController {
 
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
-
-
 }

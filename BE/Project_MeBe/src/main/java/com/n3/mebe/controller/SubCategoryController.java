@@ -2,12 +2,10 @@ package com.n3.mebe.controller;
 
 
 import com.n3.mebe.dto.response.subcategory.SubCategoryResponse;
+import com.n3.mebe.service.ISubCategoryService;
 import com.n3.mebe.service.iml.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,21 +15,7 @@ import java.util.List;
 public class SubCategoryController {
 
     @Autowired
-    private SubCategoryService subCategoryService;
-
-
-    /**
-     *  Request from Client
-     *
-     */
-
-    @GetMapping("/create_subcategory")
-    public SubCategoryResponse createSubCategory() {
-        return null;
-    }
-
-
-
+    private ISubCategoryService subCategoryService;
 
 
     /**
@@ -39,14 +23,20 @@ public class SubCategoryController {
      *
      */
     @GetMapping("/list_all")
-    public List<SubCategoryResponse> listAll() {
+    List<SubCategoryResponse> listAll() {
         return subCategoryService.getSubCategoriesResponse();
     }
 
-    @GetMapping("/listByNameCategory")
-    public List<SubCategoryResponse> listByNameCategory() {
-        return subCategoryService.getSubCategoriesResponse();
+    @GetMapping("/list/{cate}")
+    List<SubCategoryResponse> listByNameCategory(@PathVariable("cate") String cate) {
+        return subCategoryService.getSubCategoriesResponse(cate);
     }
+
+    @GetMapping("/{slug}")
+    List<SubCategoryResponse> getSubCategoryBySlug(@PathVariable("slug") String slug) {
+        return subCategoryService.getSubCategoriesBySlug(slug);
+    }
+
 }
 
 

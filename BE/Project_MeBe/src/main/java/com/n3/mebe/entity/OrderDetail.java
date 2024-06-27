@@ -25,10 +25,6 @@ public class OrderDetail {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "inventory_id")
-    private Inventory inventory;
-
     private int quantity;
 
     private float price;

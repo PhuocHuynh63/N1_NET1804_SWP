@@ -17,7 +17,6 @@ public class UserUpdateRequest {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     @JsonFormat(pattern = "dd/MM/yyyy") //format date
     private Date birthOfDate;
     private String phoneNumber;
